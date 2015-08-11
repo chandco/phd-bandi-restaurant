@@ -1,0 +1,67 @@
+
+
+.secondary-links {
+
+	// clean up widgets
+	padding: 1.5em 0;
+	
+
+
+	p { margin: 0; }
+	div.feature {
+		header h2 {
+			background: RGBA(0,0,0,0.5);
+			text-align: left;
+			font-size: 1.4em;
+		}
+
+		&:hover {
+			header h2 {
+				background: @dark;
+			}
+		}
+
+		@media screen and (max-width: 900px) {
+			width: 95%;
+			margin: auto;
+			header {
+				padding-bottom: 60%;
+			}
+		}
+	}
+
+
+}
+
+
+
+#login-box {
+
+}
+
+
+#register-box {
+	background: #fff;
+	padding: .5em;
+	border-bottom: 2px solid fade(black, 20%);
+
+	input[type="text"],
+	input[type="password"],
+	input[type="datetime"],
+	input[type="datetime-local"],
+	input[type="date"],
+	input[type="month"],
+	input[type="time"],
+	input[type="week"],
+	input[type="number"],
+	input[type="email"],
+	input[type="url"],
+	input[type="search"],
+	input[type="tel"],
+	input[type="color"],
+	.field {
+		background: darken(white, 10%);
+	}
+
+
+}

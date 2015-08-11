@@ -1,0 +1,326 @@
+#wiki-menu .visual-menu {
+
+	border-bottom: 2px solid fade(black, 20%);
+}
+
+.visual-menu {
+
+	padding: 0;
+
+	ul {
+		padding: 0;
+		li a {
+			padding-left: 2em;
+
+			
+		}
+	}
+
+
+	li {
+
+		display: block;
+
+		> a {
+			display: block;
+			padding: .5em .5em .5em 1em;	
+			border-left: 3px solid transparent;
+
+			transition: background .4s ease;
+
+			color: @wiki-menu-highlight;
+
+			&:hover {
+				opacity: 1 !important;
+				background: fade(@wiki-menu-hover, 20%) !important;
+				border-left: 3px solid @wiki-menu-hover !important;
+			}
+		}
+
+		
+
+
+		&.past > a {
+			opacity: 0.4;
+		}
+
+		
+
+		&.future > a {
+			opacity: 1;
+		}
+
+		&.active-parent {
+			background: fade(@wiki-menu-highlight, 20%);
+		}
+
+		&.current > a  {
+			opacity: 1;
+			background: fade(@wiki-menu-highlight, 35%);
+			border-left: 3px solid @wiki-menu-highlight;
+			color: @black;
+		}
+	}
+}
+
+// format the articles
+
+.article-div {
+	position: relative;
+	z-index: 1;
+}
+.anchor-point {
+	position: relative;
+	z-index: -1;
+	pointer-events: none;
+}
+.anchor-point:before {
+  content: "";
+  display: block;
+  @heightoffset: 127px;
+  height: @heightoffset;
+  margin-top: -@heightoffset;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+#wiki-content {
+
+
+	.page-featured-image {
+		position: absolute;
+		left: -4%;
+  		right: -21%;
+		top: 1em;
+		height: @header-height-px * 5;
+	}
+
+	.page-featured-image + h1 {
+		padding-top: @header-height-px * 5;
+	}
+
+	article {
+
+		position: relative;
+		z-index: 1;
+
+		h2 {
+			margin-top: 0;
+		}
+
+		.post-edit-link {
+				font-size: .5em;
+				color: #fff;
+				background: @link-color;
+				&:hover {
+					background: lighten(@link-color, 10%);
+				}
+				padding:.1em .2em;
+				border-radius: 3px;
+			}
+
+		@media screen and (min-width: @tablet-break) {
+			
+			
+			border-bottom: 1px solid fade(@wiki-menu-highlight, 50%);
+			margin-bottom: 3em;	
+
+			&:last-of-type {
+				border-bottom: none;
+			}
+			
+		}
+		
+	}
+
+	.article-div {
+		&.child {
+			border-top: 1px solid fade(black, 10%);
+		}
+
+		
+	}
+}
+// set some template specific resets on the global styles
+
+.page-template-template-wiki {
+	height: 100%; // set body height;
+
+	h1 {
+		font-size: 2.533333333em;
+  		line-height: 1.368421052em;
+  		margin-top: 0;
+	}
+
+	@media screen and (min-width: @tablet-break) { // not on mobiles
+		
+		.footer {
+		  	
+		  	width: 75%;
+		  	margin: 0 0 0 auto; // offset it
+
+		  	> .max-central {
+		  		padding-left: 18%;
+		  	}
+
+		}
+	}
+
+	
+	@media screen and (max-width: @tablet-break) {
+		background: fade(black, 5%);
+	}
+	
+
+}
+#wiki-menu {
+	height: 100%;
+	position:fixed;
+	top: 0;
+	bottom: 0;
+	padding-top:127px;
+	overflow-y: scroll;
+	width: 25%;
+	z-index: 600; // above footer
+	background: @body-background;
+
+	h2:first-of-type {
+		font-size: 1.2em;
+		margin-top: 0;
+	}
+}
+
+ul {
+	//list-style:none;
+	
+}
+
+#wiki-carousel {
+	position: relative;
+	top: -2em;	
+	margin-bottom: -1em;
+	padding-left: 25%;
+	height: 400px;
+
+	@media screen and (max-width: @tablet-break) {
+		padding-left: 0;
+		top: -60px;
+
+	}
+
+	@media screen and (max-width: @mobile-break) {
+		height: 320px;
+		margin-bottom: -2em;
+	}
+	
+}
+
+#wiki-content {
+	padding: 0 2em 2em;
+	.close-sub-section {
+		display:none;
+	}
+
+
+}
+
+
+html {
+       overflow-y: scroll;
+}
+	
+
+@media screen and (max-width: @tablet-break) {
+	#wiki-menu {
+		display:none;
+	}
+
+
+	#wiki-content {
+
+		padding: 1em 0;
+
+		.section {
+
+		border-top: none;
+		background: @body-background;
+		margin-bottom: 10px;
+		padding: 0;
+		transition:max-height linear 0.5s;
+
+			h2 {
+				margin: 0;
+				padding: 10px 20px;
+				line-height: 1.2;
+				background: white;
+				border-bottom:solid 2px fade(black, 28%);
+				position: relative;
+				font-size: 1.8em;
+
+				cursor: pointer;
+
+				&:after {
+					content: @fa-var-chevron-right;
+					.fa();
+					position: absolute;
+					right: 20px;
+					transition: transform .4s ease;
+					transform: rotate(0deg);
+					top: 18%;
+					
+					line-height: 1.2;
+				}
+			}
+
+			h3 {
+				font-size: 1.4em;
+			}
+			
+
+			.content {
+
+				max-height: 0;
+				overflow: hidden;
+				transition:max-height linear .4s;
+			
+				.article-div {
+					padding: 0 20px ;
+				}
+			}
+
+			&.open {
+
+				.content {
+					max-height: 9999px;
+					border-bottom:solid 2px #B6B5B5;
+			   	}
+
+			   	h2:after {
+			   	 	transform: rotate(90deg);
+			   	}
+			}
+
+			  	
+
+
+			.close-sub-section {
+				background:#3D3D3D;
+				color:#fff;
+				padding:5px;
+				margin-bottom:0;
+				margin-top:10px;
+				text-align:center;
+				display:block;
+				text-transform: uppercase;
+				cursor: pointer;
+			}
+
+		}
+		
+	} //#wiki-content
+} //@media screen and (max-width: @tablet-break)
+
+
+
+
+

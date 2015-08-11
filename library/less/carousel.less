@@ -1,0 +1,172 @@
+// CONFIGURATION:
+// Carousel
+
+
+
+.slick-prev:before { content: @carousel-prev-fa-icon; }
+.slick-next:before { content: @carousel-next-fa-icon; }
+[dir="rtl"] .slick-prev:before { content: @carousel-next-fa-icon; }
+[dir="rtl"] .slick-next:before { content: @carousel-prev-fa-icon; }
+
+
+.cycle-slideshow {
+	.slick-list {
+		//width: 100%;
+		//height: auto;
+		.slick-track {
+			//width: 100%;
+		//height: auto;
+			.slick-slide {
+			//display: block; // so that it appears on init.
+			//overflow: hidden;
+			position: relative;
+
+				.blur {
+					position: absolute;
+					top: -10%;
+					left: 0;
+						z-index: 0;
+						max-width: 100%;
+						width: 100%;
+						height: 120%;
+						opacity: 0.4;
+					}
+
+
+				img {
+				//	display: block;
+					//margin: auto;
+					position: absolute;
+					width: 100%;
+					height: auto;
+					top: 43%;
+					transform: translateY(-50%);
+					margin: auto;
+					left: 0;
+					right: 0;
+					z-index: 1;
+					box-shadow: 0 0 3px fade(black, 50%);
+
+					// max-width: 900px;
+
+					@media screen and (max-width: 1300px) {
+						width: auto;
+						height: 100%;
+						top: 0;
+						transform: translateX(-50%);
+						left: 50%;
+
+						
+					}
+
+
+				}
+
+				&.panorama-tablet, &.panorama-mobile, &.panorama {
+
+					
+
+					img {
+					
+
+						.img-width-100();
+						
+
+						@media screen and (max-width: 1400px) {
+							.img-height-100();
+						}
+
+
+						@media screen and (max-width: 930px) {
+							.img-width-100();
+						}
+
+						@media screen and (max-width: 750px) {
+							.img-height-100();
+						}
+						
+
+						
+
+
+
+						
+
+						
+
+					}
+					
+				}
+
+
+
+			}
+		}
+	}
+}
+.cycle-slideshow {
+
+		.tooltip {
+			position: absolute;
+			top: 0;
+			margin: auto;
+			left: 0;
+			right: 0;
+			color: #fff;
+			z-index: 500;
+		}
+
+		background: @slide-background;
+		opacity: 0;
+		transition:opacity .5s ease;
+
+		&.slick-initialized {
+			opacity: 1;
+		}
+
+		position: relative;
+		width: @cycle-carousel-width;
+
+		height: @carousel-height;
+		max-height: @carousel-max-height;
+
+		@media screen and (max-width: 930px) {
+			height: @carousel-height / 2;
+			max-height: @carousel-max-height /2;
+		}
+
+		
+
+
+		// here you would change it to be a 'fill width' thing.
+	.slick-list {
+		height: 100%;
+		.slick-track {
+			height: 100%;
+			.slick-slide {
+			display: block; // so that it appears on init.
+			overflow: hidden;
+				img {
+					display: block;
+					margin: auto;
+					height: auto;
+					width: 100%;
+					border: 0;
+					outline:0;
+				}
+			}
+		}
+	}
+
+
+
+		
+
+		
+	
+
+}
+
+html.touch .slick-next, html.touch .slick-prev {
+	display: none !important;
+}

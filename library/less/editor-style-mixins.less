@@ -1,0 +1,404 @@
+
+
+.editor-styles() {
+
+
+ 
+
+  .wpview-wrap[data-wpview-type="feature-box"] {
+    max-width: 320px;
+    display: inline-block;
+
+    margin: 20px;
+
+
+  }
+
+  .cf_columns .wpview-wrap[data-wpview-type="feature-box"] { 
+    margin: 0; // rely on the padding
+    
+  }
+
+	.dashicon() {
+        display: inline-block;
+        color: #1EC9B3;
+        -webkit-font-smoothing: antialiased;
+        font: normal 150px/1 'dashicons';
+  	}
+
+
+  .infobox {
+
+    @img-bottom : 200px;
+    color: @white;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 1em 2em;
+    background-color: #434a5b;
+    background-image: url(../images/infobox.jpg);
+    background-size: auto @img-bottom;
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    padding-bottom: @img-bottom * 0.4;
+
+    text-align: center;
+
+    font-size: 0.75em;
+
+    h2 {
+      text-align: center;
+      margin-top: 0;
+      margin-bottom: 1em;
+      font-size: 1.4em;
+    }
+
+  }
+
+
+a.cta {
+  display: block;
+}
+
+a.cta-inline {
+  display: inline-block;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+ 
+
+.col-smart p:first-child a.cta:first-child {
+  margin-top:0;
+}
+a.cta, a.cta-inline {
+  
+  background: @link-color;
+  color: @white !important;
+
+
+
+  max-width: 97%;
+  
+  
+  
+
+  * { 
+    color: @white;
+
+  }
+
+
+
+  &:hover {
+    
+    opacity: 0.7;
+    
+
+    * {
+      
+    }
+
+    i.fa:after {
+      color: @white;
+    }
+  }
+
+  font-family: @h-font;
+  font-weight: normal;
+  position: relative;
+  padding: 0.5em 1em 0.5em 1em;
+  text-align: center;
+  margin: 1em auto;
+  z-index: 1;
+  
+  border-bottom: 2px solid rgba(0, 0, 0, 0.5);
+    
+  
+
+ 
+
+  i.fa {
+  	display: inline-block;
+    color: inherit !important;
+	 margin-right: 1em;
+	 
+	 position: relative;
+	 font-size: 1.5em;
+
+   
+  }
+}
+  
+
+  a, a:visited, a:active {
+
+    div.feature { font-weight:normal; color: @white; }
+
+    } 
+
+
+
+
+a div.feature {
+  &:hover {
+    background: @lighter;
+    
+
+    header h2 {
+      .alpha-color(@dark, 0.9);
+      background: @alpha-color;
+    }
+  }
+}
+
+.no-flexbox, .no-js {
+  div.feature {
+    header {
+      img {
+        left: 0;
+        width: 100%;
+        height: auto;
+        min-height: 0;
+      }
+    }
+
+    .content {
+      min-height: 200px;
+    }
+  }
+}
+
+  a.cta-button {
+    background: RGBA(0,0,0,0.4);
+    display: inline-block;
+    padding: 2%;
+    box-sizing: border-box;
+    color: #fff;
+    text-decoration: none;
+    width: auto;
+    border-bottom: 2px solid RGBA(0,0,0,0.6);
+
+  }
+
+  div.cf.newline {
+
+    font-size: 8px;
+    color: #dddddd;
+    width: 100%;
+    &:before {
+      font-style: italic;
+      content: "new line (this text will not appear in post)";
+
+    }
+  }
+}
+
+
+
+.feature {
+
+  > p {
+    display: none; // Stupid wordpress
+  }
+
+  text-decoration: none;
+  
+  i.fa {
+    margin-right: 2em;
+  }
+
+  br {
+    display: none;
+  }
+
+  p {
+    margin: 0;
+    display: inline-block;
+    padding: 0;
+  }
+
+  * {
+    
+    color: inherit;
+    
+
+  }
+  position: relative;
+  width: 100%;
+  // max-width: 350px; // means we can't have a 2 col one unless we define it
+
+  @media screen and (max-width: 900px) {
+    max-width: 100%;
+  }
+
+ // background: @white;
+  
+  
+  header svg {
+      position: absolute;
+      width: 100%;
+      height: 20px;
+      bottom: -1px;
+      z-index: 5;
+  }
+
+  .footer-svg {
+    position: absolute;
+     width: 100%;
+    height: 20px;
+    bottom: -20px;
+    z-index: 5; 
+  }
+ 
+ // box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.7);
+
+
+  
+
+  // border-bottom: 2px solid darken(@light, 10%);
+  border-radius: 2px;
+  transition:background 0.4s ease;
+
+  background: #000;
+
+  
+  
+
+
+  header {
+    width: 100%;
+    display: block;
+    height: 0;
+    padding-bottom: 70%;
+    position: relative;
+    overflow: hidden;
+    border-bottom: none !important;
+    z-index: 0;
+
+    p {
+      padding: 0;
+      margin: 0;
+    }
+   
+
+    img {
+      position: absolute;
+      z-index: 1;
+      height: 100%;
+      width: auto;
+      max-width: 9999px;
+      min-width: 101%;
+      min-height: 100%;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%) scale(1,1) translateZ(0);
+
+      transition:transform 0.4s ease-out;
+      background-color: rgba(255,255,255,.01);
+      backface-visibility: hidden;
+
+      
+    }
+  }
+
+   h2 {
+      
+     
+      
+      
+
+      width: 100%;
+      left: 0;
+      
+      z-index: 2;
+      margin: 0 0 1em 0;
+      font-size: 1.2em;
+      text-align: left;
+      transition:background 0.2s ease;
+    }
+
+  
+
+  div.content {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 1em;
+    line-height: 1.2;
+    font-size: 0.9em;
+    color: inherit;
+    
+    height: auto;
+    z-index: 2;
+    position: absolute;
+    height: 100%;
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    padding: 0;
+    
+
+  }
+
+  .content h2 {
+    position: absolute;
+    
+    left: 0;
+    text-align: left;
+    
+    width: auto;
+    bottom: 40px;
+    padding: 0.5em;
+    top: auto;
+    font-size: 1.5em;
+    color: #ffffff;
+    font-family: @body-font;
+    text-transform: uppercase;
+    margin: auto;
+    left: 0;
+    right: 0;
+    background: fade(black, 50%);
+    background: linear-gradient(0,fade(black,60%) 50%, transparent);
+  }  
+
+
+  .copy {
+    color: #ffffff;
+    p:first-letter {
+      font-size: 1em !important;
+      .h-font;
+    }
+    
+     background: fade(black, 60%);
+    position: absolute;
+    bottom: 0%;
+    height: 40px;
+    width: auto;
+    
+    left: 0;
+    right: 0;
+    padding: 0 0.5em;
+    font-size: 1em;
+
+    font-family: @h-font;
+    text-align: left;
+    border-top: 1px solid fade(white, 50%);
+  }
+}
+
+
+// if feature box is in a 4 grid, it's going to be a bit weird, reduce the text size
+.col-smart:first-child:nth-last-child(4) ~ .col-smart, .col-smart:first-child:nth-last-child(4) {
+  .feature {
+    .content h2 {
+      font-size: 1em;
+      line-height: 1;
+      bottom: 26%;
+    }
+
+    .copy {
+      top: 70%;
+      bottom: auto;
+    }
+  }
+}

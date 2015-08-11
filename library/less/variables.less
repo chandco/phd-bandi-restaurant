@@ -1,0 +1,257 @@
+
+@red: #d22529;
+@mid-grey: RGB(128,128,128);
+@darkgrey : RGB(51,51,51);
+@darkblue : #fff;
+@lightblue : #555;
+@off-lightblue : #444;
+@darkgreen: @red;
+@lightgrey : #DDDDDD;
+@lighter-grey : #E6E6E6;
+@off-white: #F0f0f0;
+
+
+
+@import "colours";
+@colors: grey,darkgrey,red,blue,lightblue,lightgreen,superlightgrey,purple,black,white;
+
+
+
+
+
+
+// mostly this is setting variables to change the look of the site.
+
+
+// layout widths:
+
+@global-sidebar-width: 30%;
+@global-sidebar-margin: 4%;
+
+
+@header-logo-width: 15%; // smaller for this site - longer logos may need more.
+@header-logo-height: 100%;
+// COLOURS
+@this-website: ~'http://ornc.local'; // this will have to change 
+
+@body-font : 'ITC Tabula W01', sans-serif;
+@h-font : 'comic sans', 'ITC Tabula W01', sans-serif;
+
+
+.h-font() {
+	font-family: @h-font;
+}
+
+.body-font() {
+	font-family: @body-font;
+}
+
+@dark : @darkgrey;
+
+@light : @white;
+
+@lighter : @white;
+
+@body-background : @white;
+
+
+
+
+
+@med-dark : #506077;
+
+// used for navigation, amongst other things.
+@highlight : #0086ac;
+@highlight-text : @black;
+
+@main-colour: @red;
+
+@emphasis : @darkblue;
+@emphasis-text: @white; // if @emphasis was a background etc.
+
+@link-color : #D28CB8;
+
+// general colour as a default - this just sets the body tag
+@default-text : @darkgrey;
+
+
+
+@byline: @lighter;
+
+
+// CF7 Stuff
+@formbg : @lightblue;
+
+// Header Styles and sizes
+@header-background: fade(@black, 100%);
+@header-logo-tab-bg: transparent;
+
+// sidebars
+@widget-background: transparent;
+@widget-color: @white;
+@widget-title: @white;
+
+//@lighter-grey; @white
+@nav-link-color: @white;
+@nav-link-background: transparent;
+
+@nav-link-current-text: @red;
+@nav-link-current-background: transparent;
+
+@nav-highlight : fade(@white, 20%);
+@nav-highlight-text : @black;
+
+@nav-font: @body-font;
+
+@nav-secondary-highlight : @white;
+@nav-secondary-highlight-text : @purple;
+
+@nav-submenu-background : @white;
+@nav-submenu-text: @white;
+@nav-submenu-text-hover : @black;
+
+@nav-submenu-background-hover : fade(@grey, 10%);
+
+@footer-menu-hover: fade(@lightgrey, 10%);
+@footer-link-color: @white;
+
+@footer-nav-current-text: @blue;
+@footer-nav-current-background: rgba(0,0,0,0.05);
+
+// carousel styles
+@cycle-carousel-width : 100%;
+@carousel-next-fa-icon : @fa-var-chevron-right;
+@carousel-prev-fa-icon : @fa-var-chevron-left;
+@skip-offset : 5%;
+@skip-button-color : RGBA(255,255,255,0.8);
+@carousel-aspect-ratio : (4 / 6);
+@slide-background: @darkgrey;
+
+
+@carousel-max-height: 600px;
+@carousel-height: 600px; 
+
+
+
+//mobile and headers stuff
+
+
+@mobile-line-height: 14px;
+@header-height-px : 50px;
+
+
+@content-margin : 20px; // better than em because of positioning absolute
+
+
+@cta-sidebar-width : 15%;
+@mobile-cta-height : 100px;
+
+@max-central-width: 1200px;
+@max-central-outer-width: 1200px;
+@tablet-break : 60em;
+
+@mobile-break: 30em;
+
+// blog stuff
+@post-tag-background: darken(@white, 10%);
+@post-tag-color: @blue;
+@post-tag-color-hover: lighten(@blue, 10%);
+@post-tag-background-hover: darken(@white, 5%);
+
+
+// footer stuff
+
+@footer-background : @black;
+@footer-widgettitle: @white;
+
+// menus
+@day-row: @dark; // M T W T F etc
+@day-row-text: @white;
+@label-row-text: @red;
+
+@today-day-row: @red;
+@today-day-text: @white;
+
+@table-buttons-text: @white;
+@table-buttons: @blue;
+
+
+// wiki stuff 
+
+@wiki-menu-highlight: @red;
+@wiki-menu-hover: @blue;
+
+
+.color-bg-mixin(@color, @bg, @lighten) {
+	   background: lighten(@bg, @lighten); 
+  	 color: @color; 
+  	
+}
+
+
+.svg-bg-mixin(@bg, @lighten: 0) {
+   svg  {
+      
+      .triangle {
+        fill: lighten(@bg, @lighten); 
+      }
+     }
+}
+
+
+
+
+
+    
+// ............................................................
+// .for
+
+.for(@i, @n) {.-each(@i)}
+.for(@n)     when (isnumber(@n)) {.for(1, @n)}
+.for(@i, @n) when not (@i = @n)  {
+    .for((@i + (@n - @i) / abs(@n - @i)), @n);
+}
+
+// ............................................................
+// .for-each
+
+.for(@array)   when (default()) {.for-impl_(length(@array))}
+.for-impl_(@i) when (@i > 1)    {.for-impl_((@i - 1))}
+.for-impl_(@i) when (@i > 0)    {.-each(extract(@array, @i))}
+
+
+
+        
+.colours-bg() {
+
+  .color-bg-mixin(@default-text, @body-background, 0);
+
+  .for(@colors); .-each(@name) {
+    &.@{name} {
+      
+      @text: "@{name}-text";
+      
+      .color-bg-mixin(@@text, @@name, 0);
+
+      .cta-inline, .cta {
+        background: @@text;
+        color: @@name !important;
+      }
+    }
+  }
+
+
+}
+
+
+.svg-colours(@lighten: 0) {
+
+  // default
+  .svg-bg-mixin( @red, @lighten);
+
+   .for(@colors); .-each(@name) {
+    &.@{name} {
+      .svg-bg-mixin(@@name, 0);
+    }
+  }
+}

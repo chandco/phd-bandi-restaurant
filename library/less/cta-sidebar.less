@@ -1,0 +1,117 @@
+
+@dotted-border : 10px;
+#cta-sidebar {
+
+	
+	font-size: 0.8em; // this kind of like a zoom out due to the child sizings
+	
+	.widget {
+		padding: 1em 0.8em 1em 0.8em; // wide right to make it extend out
+		margin: 0;
+		position: relative;
+		top: @header-height-px + (@header-height-px * 0.4) + @dotted-border;
+		background: @lighter;
+
+		&:nth-of-type(n+2) {
+			display: none; // only one widget allowed in this box, due to other styles.  
+		}
+
+		.linkphone {
+
+			color: @white;
+			font-weight: bold;
+			display: block;
+			width: 100%;
+			text-align: center;
+			font-size: 1.44em;
+			letter-spacing: 0.08em;
+			margin-top:0.5em;
+			white-space: nowrap;
+		}
+
+		.cta {
+			font-size: 1.4em;
+			width: 96%; // careful of doing 100% when the after goes wider
+			background: @dark;
+			&:after {
+				//background: @lighter-grey;
+			}
+
+			&:hover {
+				&:after {
+					//background: @highlight;
+				}
+			}
+		}
+	}
+
+	
+	right: 0;
+
+	position: fixed;
+	top: 0;
+	
+
+	width: @cta-sidebar-width; // this is % of the body, so effectively VW
+	
+	
+	margin: 0;
+
+	z-index: 500;
+
+	line-height: 1.4em;
+	
+	@media screen and (max-width: 900px) {
+
+
+		position: relative;
+		width: 100%;
+		.widget {
+			padding: 1em 30% 1em 2em; // wide right to make it extend out
+			top: 0;
+			height: auto;
+
+
+			.linkphone {
+				display: block;
+				width: auto;
+				letter-spacing: 0.08em;
+				text-align: left;
+				clear: right;
+				line-height: inherit;
+
+				
+			}
+
+			.cta {
+				position: absolute;
+				right: 2em;
+				top: 1em;
+				width: 20%;
+				padding: 5px;
+				margin: 0 0 0 5px;
+				font-size: 1em;
+			}
+		}
+
+		top: @header-height-px;
+	}
+	
+
+
+	
+
+
+}
+
+
+/*@cycle-carousel-width : 100%;
+@carousel-next-fa-icon : @fa-var-chevron-right;
+@carousel-prev-fa-icon : @fa-var-chevron-left;
+@skip-offset : 5%;
+@skip-button-color : RGBA(255,255,255,0.8);
+@carousel-aspect-ratio : (4 / 6);
+@slide-background: @darkgrey;
+@header-height-px
+@carousel-max-height: 40vh;
+@carousel-height: 500px; */

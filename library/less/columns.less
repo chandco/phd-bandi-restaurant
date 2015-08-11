@@ -1,0 +1,298 @@
+
+	.row, .cf_columns, .cf-columns {
+		height: auto;
+		display: flex;
+		flex-direction: row;
+
+		margin-top: 1em;
+		margin-bottom: 1em;
+
+
+		.col-smart {
+			flex-grow: 1;
+			height: auto;
+			max-width: 100%;
+			flex-basis: 0;
+			@media screen and (max-width: 768px) {
+				float: none;
+			}
+		}
+
+		.col-smart.wider {
+			flex-grow: 2.12;// 0 0; // this might be a bad idea but it might also be SCIENCE!
+			// Basically a 2/3 width was not the same as 2 thirds + a margin.  I think the .12 adds what would
+			// have been this.  
+
+			// i.e 33.3 + 33.3 + 4%
+			// or somethings.  This will break on a 2 2 4 one I guess.  
+		}
+
+		@media screen and (max-width: 768px) {
+
+			display: block;
+
+		}
+	}
+
+
+#tinymce .col-smart {
+	margin-left: 0 !important;
+}
+
+
+@padding: 4%;
+@third : (100% - (2 * @padding)) / 3;
+@half : (100% - (1 * @padding)) / 2;
+@quarter : (100% - (3 * @padding)) / 4;
+
+.no-flexbox, #tinymce {
+
+	.cf_columns, .row, .cf-columns {
+
+		// One */
+		.col-smart:only-child {
+			max-width: 100%;
+		}
+
+		// Two */
+		.col-smart:first-child:nth-last-child(2) ~ .col-smart, .col-smart:first-child:nth-last-child(2) {
+			max-width: @half !important;
+			//margin-right: 1%;
+		}
+
+		// Three */
+		.col-smart:first-child:nth-last-child(3) ~ .col-smart, .col-smart:first-child:nth-last-child(3) {
+			max-width: @third !important;
+			//margin-right: 1%;
+		}
+
+
+		&.has-wide { // we're not doing 2/5 2/5 1/5 here.
+			.col-smart:first-child:nth-last-child(3) ~ .col-smart, .col-smart:first-child:nth-last-child(3) {
+				max-width: @quarter !important;
+				//margin-right: 1%;
+			}
+
+			.col-smart:first-child:nth-last-child(3) ~ .col-smart.wider, .col-smart.wider:first-child:nth-last-child(3) {
+				max-width: @half !important;
+				//margin-right: 1%;
+			}
+
+			.col-smart:first-child:nth-last-child(2) ~ .col-smart, .col-smart:first-child:nth-last-child(2) {
+				max-width: @third !important;
+				//margin-right: 1%;
+			}
+
+			.col-smart:first-child:nth-last-child(2) ~ .col-smart.wider, .col-smart.wider:first-child:nth-last-child(2) {
+				max-width: (@third * 2) !important;
+				//margin-right: 1%;
+			}
+
+		}
+
+
+
+		
+
+
+		// Four */
+		.col-smart:first-child:nth-last-child(4) ~ .col-smart, .col-smart:first-child:nth-last-child(4) {
+			max-width: @quarter !important;
+			//margin-right: 1%;
+		}
+
+		// Last image doesn't need a margin, regardless of count */
+		.col-smart:nth-last-of-type(1) {
+			//margin-right: 0 !important;
+		}
+
+		// Five, eight, eleven, ... */
+
+		// First two are half-sized (99% / 2) */
+		.col-smart:first-child:nth-last-child(3n+5) ~ .col-smart, .col-smart:first-child:nth-last-child(3n+5) {
+			max-width: @half;
+
+			//margin-right: 1%;
+		}
+
+		// Last n - 2 are (98% / 3) */
+		.col-smart:first-child:nth-last-child(3n+5) + .col-smart ~ .col-smart {
+			max-width: @third;
+			//margin-right: 1%;
+		}
+
+		
+
+
+		
+
+		// But second, fifth, eighth, ... have no right margin */
+		.col-smart:first-child:nth-last-child(3n+5) ~ .col-smart:nth-child(3n+2) {
+			//margin-right: 0;
+		}
+
+	// Six, nine, twelve, ... */
+
+		// Six, nine, twelve, ... are all (98% / 3) */
+		.col-smart:first-child:nth-last-child(3n+6) ~ .col-smart, .col-smart:first-child:nth-last-child(3n+6) {
+			max-width: @third;
+			//margin-right: 1%;
+		}
+
+		// Every third one of these has no right margin. */
+		.col-smart:first-child:nth-last-child(3n+6) ~ .col-smart:nth-child(3n) {
+			//margin-right: 0;
+		}
+
+
+		// Seven, ten, thirteen, ... */
+
+		// First four are half-sized (99% / 2) */
+		.col-smart:first-child:nth-last-child(3n+7) ~ .col-smart, .col-smart:first-child:nth-last-child(3n+7) {
+			max-width: @half * 2;
+			//margin-right: 1%;
+		}
+
+		// Last n - 4 are (98% / 3) */
+		.col-smart:first-child:nth-last-child(3n+7) + .col-smart + .col-smart + .col-smart ~ .col-smart {
+			max-width: @third;
+			//margin-right: 1%;
+		}
+
+		// The second and fourth, seventh, tenth, ... have no right margin */
+		.col-smart:first-child:nth-last-child(3n+7) + .col-smart, 
+			.col-smart:first-child:nth-last-child(3n+7) ~ .col-smart:nth-child(3n+4) {
+			//margin-right: 0;
+		}
+
+	}
+}
+
+
+.row, .cf_columns, .cf-columns {
+
+	
+	
+	position: relative;
+	width: 100%;
+
+	//border: 1px solid rgba(255,0,0,0.5);
+
+
+	.debug {
+		
+
+		
+		height: 300px;
+		background-color: rgba(255,0,0,0.5);
+		//color: #fff;
+		//padding: 10px;
+	}
+	> *[class^="col-"] {
+
+		//.debug();
+		
+		//border: 1px solid rgba(0,0,0,0.5);
+		position: relative;
+		vertical-align: top;
+		box-sizing: border-box;
+	
+	
+		padding-left: @padding;
+		width: 100%;
+
+
+
+		&:last-of-type {
+		//	margin-right: 0;
+		}
+
+		&:first-of-type {
+			padding-left: 0;
+			width: 96%; // flexbox weirdness
+			
+
+		}
+
+		
+	}
+	// 30 - 2 - 30 - 2 - 30
+	
+
+	.col-quarter { width: @quarter;  }
+	.col-half { width: @half; }
+	.col-threequarters { width: (3 * @third); }
+	.col-third { width: @third; }
+	.col-twothirds { width: (2 * @third); }
+
+
+
+
+	
+
+
+
+	@media screen and (max-width: 600px) {
+		> div[class^="col-"] {
+			max-width: 100% !important;
+			padding-left: 0 !important;
+			padding-right: 0 !important;
+
+			margin-bottom: @padding !important;
+		}
+
+		&.no-respond {
+			.col-quarter { width: @quarter;  }
+			.col-half { width: @half; }
+			.col-threequarters { width: (3 * @third); }
+			.col-third { width: @third; }
+			.col-twothirds { width: (2 * @third); }
+
+			> div[class^="col-"] {
+				&:last-of-type {
+					margin-right: 0;
+				}
+
+				&:first-of-type {
+					margin-left: 0;
+				}
+			}
+		}
+	}
+
+
+}
+
+
+// column fixes
+
+.col-smart {
+	> * {
+		&:first-child {
+			margin-top: 0; // remove margins for the first h2 of its type in a column
+		}
+	}
+}
+
+// wordpress blog styles to help the column behaviour.  This is content editing stuff that only happens when something is inside a column
+@media screen and (max-width: @tablet-break) {
+	
+	.col-smart img {
+		width: 100%;
+		height: auto;
+		float: none;
+
+		&.alignright, &.alignleft {
+			float: none;
+			margin: auto;
+		}
+	}
+
+	.col-smart {
+		width: 100% !important;
+	}
+}
+
+dl {
+	width: 100% !important;
+}

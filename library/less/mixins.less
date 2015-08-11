@@ -1,0 +1,258 @@
+/* LESS Document */
+
+
+.img-height-100() {
+  top: 0;
+  width: auto;
+  height: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.img-width-100() {
+  left: 0;
+  height: auto;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+
+
+.fixedbg() {
+	
+	background-repeat: no-repeat;
+	background-size: 100% auto;
+	background-position: left top;
+	background-attachment: fixed;
+	
+}
+
+.text-outline(@size : 1px, @color : @yellow)
+{
+	.text-shadow(@size (@size * -1) 0  @yellow,  
+    @size (@size * -1) 0  @yellow,
+    (@size * -1) @size 0  @yellow,
+     @size @size 0  @yellow);
+}
+
+
+
+.fa() {
+  &:before {
+    display: inline-block;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+
+
+.fa-this(@icon) {
+  
+  &:before {
+    content: @icon;
+    margin-right: 0.2em;
+    .fa();
+  }
+}
+
+.ratiobox(@width : 100%, @x : 16, @y : 9) {
+	
+	width:@width;
+	height:0;
+	
+	padding-bottom: @width * (@y / @x);	
+	
+}
+
+
+.alphaColor(@color: black, @alpha: 0.5) 
+{
+	color: rgba(red(@color), green(@color), blue(@color), @alpha);  
+}
+
+.alphaBG(@color: black, @alpha: 0.5) 
+{
+	background: rgba(red(@color), green(@color), blue(@color), @alpha);  
+}
+
+.gradientV(@start, @end){
+  background: (@start + @end) / 2; // Non CSS3 browsers get the average color
+  background-image: -moz-linear-gradient(top,  @start, @end); // FF 3.6
+  background-image: -webkit-gradient(linear, left top, left bottom, from(@start), to(@end)); // Safari 4+, Chrome
+  background-image: -webkit-linear-gradient(top, @start, @end); // Chrome 10+, Safari 5.1+
+  background-image: -o-linear-gradient(top, @start, @end); // Opera 11.10+
+  background-image: linear-gradient(top, @start, @end); // CSS3
+  filter: %("progid:DXImageTransform.Microsoft.gradient(startColorstr=%d, endColorstr=%d)", @start, @end); // IE6 & 7
+  -ms-filter: %("progid:DXImageTransform.Microsoft.gradient(startColorstr=%d, endColorstr=%d)", @start, @end); // IE8
+  background-image: -ms-linear-gradient(top, @start, @end); // IE10
+}
+
+
+.alphaGradient() {
+	background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%); /* IE10+ */
+background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+
+}
+
+
+// darken a color: 
+.darken(@color, @darken: 50, @opacity : 1) {
+
+  @red : red(@color)-@darken;
+  @green : green(@color)-@darken;
+  @blue :   blue(@color)-@darken;
+
+  @darker : rgba( @red, @green, @blue, @opacity );  
+  
+}
+
+.lighten(@color, @lighten: 50, @opacity : 1) {
+
+  @red : red(@color)+@lighten;
+  @green : green(@color)+@lighten;
+  @blue :   blue(@color)+@lighten;
+
+  @lighter : rgba( @red, @green, @blue, @opacity );  
+
+}
+
+.alpha-color(@color,  @opacity : 0.5) {
+
+  @red : red(@color);
+  @green : green(@color);
+  @blue :   blue(@color);
+
+  @alpha-color : rgba( @red, @green, @blue, @opacity );  
+}
+
+
+
+
+.button-reset() {
+  // remove default appearance for a button.  Only use this if you don't want backgrounds, borders, etc
+  border: none;
+  background: none;
+}
+
+
+.vertical-center() {
+  top: 50%;
+  transform:translateY(-50%);
+  position: absolute;
+}
+
+
+.max-central-mixin(@max-width:@max-central-width) {
+      width: 100%;
+      max-width: @max-width;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+
+      @media screen and (max-width: @max-central-width) {
+        width: 100%;
+        box-sizing: border-box;
+        padding-left: 2em;
+        padding-right: 2em;
+      }
+}
+
+.central-column {
+  .max-central-mixin();
+}
+
+.max-central {
+  .max-central-mixin();
+}
+
+.dotted-border(@outer-padding : 15px, @inner-border : 5px, @background : RGBA(92,117,139,0.9) )  {
+
+  //box-sizing: border-box;
+    
+
+  background: @background;
+
+  @red : red(@background);
+  @green : green(@background);
+  @blue :   blue(@background);
+
+  @alpha-color : rgba( @red, @green, @blue, 0.5 );  
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: -@outer-padding;
+    left: -@outer-padding;
+    right: -@outer-padding;
+    bottom: -@outer-padding;
+    background: @alpha-color;
+    z-index: -2;
+    padding: 0;
+  }
+
+  &:before {
+    border-image-source:url('../images/white-dots-border.png');
+    border-image-slice: 29;
+    border-image-width: 4px;
+    border-image-outset: 0px;
+    border-image-repeat: repeat;
+    content: "";
+
+    position: absolute;
+    top: -@inner-border;
+    left: -@inner-border;
+    right: -@inner-border;
+    bottom: -@inner-border;
+    background: none;
+    z-index: -1;
+    padding: 0;
+  }
+}
+
+
+
+.flex-container(@children-width: 4, @margin: 1%) {
+  // must be a number not a percent, eg 4 not 25%
+  display: flex;
+  list-style-type: none;
+  justify-content:space-between;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 0;
+
+  @children-width-calc : (100*1 * ( 1 / @children-width )) - @margin;
+
+    &:after {
+      display: block;
+      content: "";
+      margin-right: auto;
+      width: @children-width-calc;
+      //background: #ff6600;
+    }
+
+    > * {
+      flex-grow: 1;
+      flex-shrink: 0;
+      flex-basis: @children-width-calc;
+      max-width: @children-width-calc;
+      margin-bottom: @margin;
+      margin-left: auto !important;
+      //background: #00f;
+      @less-1 : @children-width - 1;
+      &:nth-of-type(@{children-width}n-@{less-1}) {
+        margin-left: 0 !important;
+        //background: #0f0;
+      }
+    }
+}

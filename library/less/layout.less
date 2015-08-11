@@ -1,0 +1,303 @@
+html {
+  -ms-text-size-adjust:100%;
+  -webkit-text-size-adjust:100%;
+}
+body {
+  margin:0;
+  
+  width: 100%;
+  
+  -webkit-font-smoothing:antialiased;
+}
+
+
+
+
+
+@media screen and (max-width: 600px) {
+  h1 {
+    font-size: 2em;
+  }
+}
+.hentry {
+  
+
+  
+  margin-bottom:1.5em;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+  
+
+  header {
+  //  border-bottom:1px solid @byline;
+    
+  }
+  footer {
+    
+    border-top:1px solid @byline;
+    padding-top: 1.5em;
+
+    p {
+      margin:0;
+    }
+  }
+}
+
+
+img.alignfull-width {
+  width: 100%;
+  height: auto;
+}
+
+
+.full-width-background.white .entry-content tr:nth-child(even) {
+  background-color: RGBA(0,0,0,0.2);
+}
+.entry-content {
+ 
+ 
+  .size-auto, .size-full, .size-large, .size-medium, .size-thumbnail {
+    max-width:100%;
+    height:auto;
+
+  }
+  p {
+    margin:0 0 1.5em;
+    &:last-of-type {
+      margin: 0 0 0;
+    }
+  }
+
+  @tborder: RGBA(0,0,0,0.1);
+  @tshade: RGBA(200,200,200,0.2);
+
+
+  table {
+    width:100%;
+    border:1px solid @tborder;
+    margin-bottom:1.5em;
+    caption {
+      margin:0 0 7px;
+      font-size:0.75em;
+      color:#9fa6b4;
+      text-transform:uppercase;
+      letter-spacing:1px;
+    }
+  }
+  
+
+  tr {
+    //border-bottom:1px solid @tborder;
+  }
+  tr:nth-child(even) {
+    background-color:@tshade;
+  }
+  td {
+    padding:7px;
+    //border-right:1px solid @tborder;
+  }
+  td:last-child {
+    border-right:0;
+  }
+  th {
+    background-color:@tshade;
+    //border-bottom:1px solid @tborder;
+    //border-right:1px solid @tborder;
+  }
+  th:last-child {
+    border-right:0;
+  }
+  blockquote {
+    margin:0 0 1.5em 0.75em;
+    padding:0 0 0 0.75em;
+    border-left:3px solid #2980b9;
+    font-style:italic;
+    color:#9fa6b4;
+  }
+  dd {
+    margin-left:0;
+    font-size:0.9em;
+    color:#787878;
+    margin-bottom:1.5em;
+  }
+  img {
+    margin:0 0 1.5em 0;
+    max-width:100%;
+    height:auto;
+  }
+  pre {
+    background:RGBA(0,0,0,0.1);
+    
+    font-size:0.9em;
+    padding:1.5em;
+    margin:0 0 1.5em;
+    border-radius:3px;
+  }
+}
+
+
+
+
+.flex {
+  display: flex;
+
+  &.wrap {
+    flex-wrap: wrap;
+  }
+
+  
+}
+
+
+
+
+.left-sidebar {
+  width: @global-sidebar-width;
+  margin-right: @global-sidebar-margin;
+  position: relative;
+  
+  margin-top: 0;
+  float: left;
+
+  
+
+  @media screen and (max-width: 900px) {
+    float: none;
+  }
+
+  @media screen and (max-width: 700px) {
+    position: relative;
+    width: 100%;
+    right: 0;
+  }
+}
+
+.left-content {
+
+    width: 100%;
+
+    margin: auto;
+    position: relative;
+    float: left;
+    width: 100% - @global-sidebar-width - @global-sidebar-margin;
+
+    
+    > *:first-of-type {
+      margin-top: 0;
+    }
+
+}
+
+
+.right-sidebar {
+     width: @global-sidebar-width;
+      margin-left: @global-sidebar-margin;
+      position: relative;
+      
+      margin-top: 0;
+      float: right;
+
+      
+
+      
+}
+
+.right-content {
+    width: 100%;
+
+    > *:first-of-type {
+      margin-top: 0;
+    }
+
+    margin: auto;
+    position: relative;
+    float: right;
+    width: 100% - @global-sidebar-width - @global-sidebar-margin;  
+}
+
+
+@media screen and (max-width: 900px) {
+
+    .left-content, .right-content {
+        float: none;
+        width: 100%;
+    }
+      
+    .left-sidebar, .right-sidebar {
+        width: 100%;
+        float: none;
+        margin: auto;
+    }
+      
+}
+
+.responsive-flex-container {
+  clear: both;
+
+  &:after {
+    content:"";
+    clear: both;
+    display: table;
+    width: 100%;
+
+  }
+
+  @media screen and (max-width: @tablet-break) {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+
+    .left-content, .right-content {
+      order:-1;
+      width: 100%;
+    }
+
+    .left-sidebar, .right-sidebar {
+      order:2;
+      width: 100%;
+    }
+  }
+}
+
+
+
+.full-width {
+  clear: both;
+
+  &:after {
+    content:"";
+    clear: both;
+    display: table;
+    width: 100%;
+
+  }
+}
+
+
+#inner-footer { 
+  
+
+  div[class^="col-"] nav {
+    width: 95%;
+  }
+
+}
+
+footer {
+  .footerinfo {
+    margin-top: 2em;
+    border-top: 1px solid fade(@white, 20%);
+    padding: 2em 0 20px;
+    
+  }
+
+  .widget:first-of-type {
+    margin-top:0;
+  }
+}
+
+
+
+// featured image for non carousel page-break-inside: 

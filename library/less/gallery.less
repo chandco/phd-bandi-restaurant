@@ -1,0 +1,82 @@
+
+
+/// Gallery - should be moved outside of this
+
+.col-smart .gallery figure {
+  width: 48%;
+  margin-bottom: 1em;
+}
+
+
+.gallery {
+  text-align: center;
+  //overflow: hidden;
+  text-align: center;
+  padding: 0;
+  /* border-top: 1px solid #bbe3e8; */
+  /* border-bottom: 1px solid #bbe3e8; */
+  margin: 2em auto;
+
+  &:hover {
+    figure a img {
+      filter: grayscale(100%);
+      opacity: 0.5;
+    }
+  }
+
+  body {
+    color:red;
+  }
+
+  figure {
+
+
+    width: 32%;
+    vertical-align: top;
+    display:inline-block;
+    margin: 0;
+    padding: 0.2em;
+    line-height: 0;
+    position: relative;
+    z-index: 2; // why was this 5555?
+
+    figcaption {
+      position: absolute;
+      bottom: 1.5em;
+      right: 1.5em;
+      color: #fff;
+      text-shadow: 0 0 5px #000;
+      font-family: @h-font;
+      
+    }
+
+    @media screen and (max-width:700px) {
+      width:100%;
+    }
+    div {
+      margin: 0;
+      padding: 0;
+    }
+
+    &:nth-child(3n-1) {
+      margin: 0;
+    }
+    img {
+      width:100%;
+      height: auto;
+      display: block;
+      margin: 0;
+      transition: all 0.3s ease;
+    }
+    
+    transition: all 0.3s ease;
+    &:hover a img {
+      filter: none;
+      
+      opacity: 1;
+
+
+    }
+  }
+}
+

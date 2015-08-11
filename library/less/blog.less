@@ -1,0 +1,317 @@
+// blog feed 
+
+// make our blogs wider - more content = more need for interface.
+
+
+
+
+.blog, .single-post, .archive {
+
+	h1.entry-title {
+		font-size: 3em;
+		margin-bottom: 1em;
+	}
+
+	.category-description {
+		margin-top: -1em;
+
+		p:first-of-type { 
+			margin-top: 0;
+		}
+	}
+
+
+
+	.post {
+		border-bottom: 2px solid darken(@dark, 5%);
+		margin-bottom: 2em;
+
+		&:last-of-type {
+			border-bottom: none;
+		}
+		
+		padding: 0 0 1.5em;
+
+		max-width: 700px; // not so big on desktops
+		margin: 0 auto 0 0;
+
+
+		@media screen and (max-width: 700px) {
+			background: none;
+			padding: 0;
+		}
+	}
+
+	#inner-content {
+		width: 100%;
+		margin: 0 auto;
+		
+		position: relative;
+		
+		min-height: 480px;
+		@media screen and (max-width: 1400px) {
+		    width: 96%;
+		    padding-top: 2em;
+		  }
+
+	}
+
+
+	.article-header {
+		display: block;
+		img {
+			width: 100%;
+			
+			height: auto;
+		}
+
+		
+
+		
+
+		&:after {
+			content:"";
+			display:table;
+			clear: both;
+		}
+	}
+
+	
+}
+
+.blog, .archive, .single-post {
+	.entry-content {
+		padding: 1.5em 0 0;
+	}
+}
+
+.single-title, .page-title, .entry-title {
+  margin-top:0;
+}
+.byline {
+  font-size: 0.8em;
+  font-style:italic;
+
+}
+
+.metadata {
+	font-size: 0.8em;
+	padding-top: 1em;
+	border-top: 1px solid fade(black, 10%);
+	border-bottom: 1px solid fade(black, 10%);
+	margin-top: -2em;
+}
+
+// small preview blog posts:
+
+.grid-feed {
+	display: flex;
+	list-style-type: none;
+	justify-content:space-between;
+	width: 100%;
+	padding: 0;
+
+	.post-preview {
+		width: 48%; // assumes 4, might have to fix this for other parents
+		margin-bottom: 3em;
+	}
+
+}
+
+
+
+
+.archive, .blog {
+
+	.grid-feed {
+
+
+
+		// Each has to be in an EXCLUSIVE query to avoid having to do resets
+		@media screen and (min-width: 1400px) {
+			.flex-container(2); 	
+		}
+
+		@media screen and (max-width: 1400px) and (min-width: @tablet-break) {
+			.flex-container(2); 	
+		}
+		
+		@media screen and (max-width: @tablet-break) and (min-width: @mobile-break) {
+			.flex-container(2);
+		}
+
+		@media screen and (max-width: @mobile-break) {
+			.flex-container(1);
+		}
+
+		> .post-preview {
+			margin-bottom: 4em;
+		}
+
+
+	}
+	// .grid-feed {
+	// 	flex-wrap: wrap;
+
+	// 	background: #f00;
+
+		
+	// }
+
+	// .post-preview {
+	// 	//margin-right: 1%;
+	// 	flex-grow: 1;
+ //  		flex-shrink: 0;
+ //  		flex-basis: 24%;
+ //  		max-width: 24%;
+ //  		margin-left: auto;
+
+	// 	margin-bottom: 1%;
+	// 	//margin-right: (100% - (24% * 4)) / 3;
+	// 	&:nth-of-type(4n-3) {
+	// 	//	margin-right: 0;
+	// 	margin-left: 0;
+	// 	}
+		
+	// 	background: #00f;
+	// }
+	// .post-preview:last-of-type {
+		
+	// 	//margin-left: auto;
+	// }
+
+
+
+
+
+}
+
+.post-preview {
+	display: block;
+	background: white;
+	padding-bottom: 30px;
+
+	&:after {
+
+	}
+
+	
+
+	.image-container {
+		width: 100%;
+		height: 0;
+		padding-bottom: 55%;
+		
+		display: block;
+		position: relative;
+		border-bottom: 2px solid transparent;
+		overflow: hidden;
+		z-index: 5;
+		background: @white;
+
+		img {
+			position: absolute;
+			.vertical-center();
+			left: 0;
+			width: 100%;
+			height: auto;
+			margin: auto;
+		}
+
+	}
+
+	h4 {
+		
+		padding: 1em;
+		margin: 0;
+		background: @white;
+		z-index: 5;
+		position: relative;
+		color: inherit !important;
+
+	}
+
+	.excerpt {
+		padding: 0 1em;
+		background: @white;
+
+		color: @black;
+		font-size: .8em;
+		line-height: 1.2em;
+		width: 100%;
+		position: static;
+		z-index: 1;
+		//height: 100%;
+
+		.excerpt-read-more {
+			position: absolute;
+			bottom: 10px;
+			right: 1em;
+		}
+		
+	}
+	position: relative;
+
+	
+}
+
+
+
+
+
+.shortcode-post-list {
+	width: 100%;
+
+    padding: 0;
+    margin: 1em auto;
+         
+
+      @media screen and (min-width: @tablet-break) {
+        .flex-container(4);  
+
+
+      }
+
+       @media screen and (max-width: @tablet-break) and (min-width: @mobile-break) {
+        .flex-container(2);   
+
+        // Law Soc Specific:
+        .post-preview {
+        	margin-bottom: 4em;
+        } 
+      }
+
+
+      @media screen and (max-width: @mobile-break) {
+        .flex-container(1);  
+
+        .post-preview {
+        	margin-bottom: 4em;
+        }
+
+
+      }
+
+
+     margin-bottom: 2em;
+    
+  
+}
+
+.no-flexbox {
+	.shortcode-post-list {
+		display: block;
+		.post-preview {
+			float: left;
+			width: 24%;
+			margin: 0 1% 0 0;
+			height: 400px;
+
+		}
+
+		overflow: hidden;
+		
+
+
+	}
+}

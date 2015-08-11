@@ -1,0 +1,270 @@
+
+
+.yarpp-related {
+
+	&:before {
+		display: table;
+		content: "";
+		width: 100%;
+	}
+	clear: both;
+	.related-posts {
+		list-style-type: none;
+		margin: 1em 0;
+		padding: 0;
+		text-align: center;
+		white-space: nowrap;
+
+		> li {
+			display: inline-block;
+			vertical-align: top;
+			padding-bottom: 23% * 0.6;
+			height: 0;
+			background: rgba(0,0,0,0.2);
+			width: 23%;
+
+			overflow: hidden;
+
+			&:nth-of-type(n+2) {
+				margin-left: 2%;
+			}
+
+			position: relative;
+
+			.img {
+				position: absolute;
+				height: 100%;
+				width: 100%;
+				z-index: 1;
+
+				transition: transform 0.3s ease, opacity 0.3s ease;
+				opacity: 1;
+				img {
+					position: absolute;
+					width: 300px; // this is set in library/images.php and should really be the same pixel size to avoid zooming weirdness.
+					height: auto;
+					
+					top: 50%;
+					left: 50%;
+					transform:translate(-50%, -50%);
+					position: absolute;
+
+				}
+			}
+
+
+
+			.title {
+				position: absolute;
+				left: 0;
+				right: 0;
+				text-align: left;
+				width: 100%;
+				bottom: -6%;
+				background: RGBA(0,0,0,0.5);
+				z-index: 2;
+				padding: 1% 2% 6% 2%;
+				color: @white;
+				font-size: 0.6em;
+
+				transition: bottom 0.3s ease
+			}
+
+			&:hover {
+				.img {
+					transform:scale(2,2);
+					opacity: 0.4;
+				}
+
+				.title {
+					bottom:0;
+				}
+			}
+
+			@media screen and (max-width: 800px) {
+				display: block;
+				width: 90%;
+				padding-bottom: 90% * 0.6;
+				margin: 2% auto;
+
+				&:nth-of-type(n+2) {
+					margin: 2% auto;
+				}
+
+				.img {
+				
+					img {
+						position: absolute;
+						width: 100%; // this is set in library/images.php and should really be the same pixel size to avoid zooming weirdness.
+						height: auto;
+						
+						top: 50%;
+						left: 50%;
+						transform:translate(-50%, -50%);
+						position: absolute;
+
+					}
+				}
+
+				.title {
+					font-size: 1em;
+				}
+
+
+				&:hover {
+					.img {
+						transform:scale(1,1);
+						opacity: 0.4;
+					}
+
+					
+				}
+
+
+			}
+		}
+	}
+}
+
+
+
+// images
+
+.align-left {
+	float: left;
+	margin-right: 1em;
+	margin-bottom: 1em;
+
+	// responsive m9s
+
+	@media screen and (max-width: 800px) {
+		float: none;
+		margin-right: 0;
+	}
+}
+
+.align-right {
+	float: right;
+	margin-left: 1em;
+	margin-bottom: 1em;
+
+	// responsive m9s
+
+	@media screen and (max-width: 800px) {
+		float: none;
+		margin-left: 0;
+		
+	}
+}
+
+.align-center {
+	position: relative;
+	display: block;
+	clear: both;
+	margin: 1em auto;
+}
+
+
+  a.cta-button {
+    background: RGBA(0,0,0,0.4);
+    display: inline-block;
+    padding: 2%;
+    box-sizing: border-box;
+    color: #fff;
+    text-decoration: none;
+    width: auto;
+    border-bottom: 2px solid RGBA(0,0,0,0.6);
+    
+  }
+
+
+  // inline content links
+
+  #main .post { // should only target the actual content and not random other things
+
+	a[href^="mailto:"] {
+		.fa-this(@fa-var-envelope);
+
+	}
+
+	a[href^="http://twitter.com"] {
+		.fa-this(@fa-var-twitter);
+
+	}
+
+	a[href*="linkedin.com"] {
+		.fa-this(@fa-var-linkedin);
+	}
+
+	a[href*="facebook.com"] {
+		.fa-this(@fa-var-facebook-square);
+	}
+
+	a[href$=".pdf"] {
+		.fa-this(@fa-var-file-pdf-o);
+	}
+	//\f0ac
+	
+	a[href^="http://"] {
+		// I'm not sure we want this, but if we do we need to work out how to stop it kicking in for anything that isn't just text content.
+		// Perhaps inline link or something. 
+		//.fa-this(@fa-var-globe);
+	}
+
+	a[href^="http://ornc.local"] {
+		&:before {
+			content: "";
+			display: none;
+			margin-right: 0;
+		}
+			
+	}
+
+
+
+  }
+
+footer.article-footer {
+
+		margin-bottom: 1em;
+
+}
+
+
+
+	  a[rel="category tag"] {
+	  	padding: 0.2em 0.4em;
+	  	background: @post-tag-background;
+	  	color: @post-tag-color;
+
+	  	margin: 0.2em;
+	  	border-bottom: 2px solid RGBA(0,0,0,0.25);
+		display: inline-block;
+		text-transform: capitalize;
+		border-radius: 2px;
+	  	&:hover {
+	    		background: @post-tag-background-hover;
+	    		color: @post-tag-color-hover;
+	    	}
+	  }
+
+
+
+	  .tags {
+	  	
+	  	a[rel="tag"] {
+	  		text-transform: capitalize;
+	  		display: inline-block;
+	    	padding: 0.2em  0.4em;
+	    	background: @post-tag-color;
+	    	color: @post-tag-background;
+	    	margin: 0.2em;
+	    	border-bottom: 2px solid RGBA(0,0,0,0.4);
+	    	border-radius: 2px;
+
+	    	&:hover {
+	    		color: @post-tag-background-hover;
+	    		background: @post-tag-color-hover;
+	    	}
+	    }
+	}

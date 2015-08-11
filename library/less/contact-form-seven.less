@@ -1,0 +1,993 @@
+
+
+
+span.wpcf7-list-item {
+	display: block;
+	margin-top: -5px;
+	position: relative;
+	label {
+		position: relative;
+	}
+
+}
+
+.wpcf7-form-control-wrap {
+	position: relative;
+	display: block;
+	span[role='alert'] {
+		z-index: 5;
+
+	}
+}
+label {
+	input[type='checkbox'] {
+		display: none;
+	}
+
+	input[type='checkbox'] + span {
+		
+		position: relative;
+
+		display: block;
+		cursor: pointer;
+
+		width: 100%;
+		box-sizing: border-box;
+		padding: .5em 1% .5em 6%;
+
+		border-bottom: 2px solid transparent;
+		transition:border 0.4s ease, background 0.6s ease;
+
+		&:hover {
+			
+			background: lighten(@highlight, 10%);
+			color: darken(@highlight, 10%);
+			&:before {
+				content: @fa-var-check-square;
+			}
+		}
+
+
+		
+		&:before {
+			
+			content: @fa-var-square-o;
+			color: @grey;
+			transition:color 0.4s ease;
+
+			z-index: 2;
+		}
+
+		&:after {
+			
+			content: "";
+
+			transition:text-shadow 0.4s ease, color 0.4s ease;
+			color: @white;
+			
+			
+			z-index: 1;
+
+			text-shadow: 0px 0px 0 @dark, 0px 0px 0 @dark, 0px 0px 0 @dark, 0px 0px 0 @dark;
+
+		}
+
+		&:after, &:before {
+			.fa();
+			font-size: 1.4em;
+			position: absolute;
+			width: 2%;
+			left: 2%;
+			top:50%;
+			transform: translateY(-50%);
+			
+		}
+	}
+	input[type='checkbox']:checked + span {
+		
+		background: @highlight;
+		border-bottom: 2px solid @formbg;
+	
+	
+		color: @white;
+
+		&:before {
+			
+			content: @fa-var-check-square;
+			color: @white;
+
+		}
+
+		&:after {
+			
+			content: @fa-var-square;
+			color: @dark;
+			text-shadow: 2px 2px 0 @dark, -2px -2px 0 @dark, 2px -2px 0 @dark, -2px 2px 0 @dark;
+		
+
+		}
+
+		&:hover {
+			.lighten(@white, 0, 0.5);
+			background: @white;
+		}
+
+	}
+}
+
+
+
+.popup-box {
+	.popup {
+		display:none;
+	}
+
+
+}
+
+#popup-box-overlay {
+	
+	z-index:999999;
+	width:100%;
+	height: 100%;
+	height: 100vh;
+	
+	left:0;
+	right:0;
+	position: fixed;
+	margin:auto;
+	top:10%;
+	top:10vh;
+	
+		width: 100%;
+		max-width:900px; 
+		margin: auto;
+
+		max-height:800px;
+		max-height: 80vh;
+		min-height:300px;
+		min-height: 300px;
+		
+		
+
+		
+		z-index: 2000;
+
+	.popup {
+		z-index: 2;
+		width: 100%;
+		height: 100%;
+		padding: 3%;
+		box-sizing: border-box;
+		border:5px solid @dark;
+		overflow-y: scroll;
+		background:@formbg;
+		position: absolute;
+	}
+
+	button.close {
+		position: absolute;
+		top: 3%;
+		right: 3%;
+		z-index: 3;
+
+		text-align: right;
+		
+		width: 50px;
+		padding: 0;
+		background: none;
+		
+		font-weight:bold;
+		line-height: 1.2;
+		border: none;
+
+		font-size: 1.2em;
+
+		
+		
+
+		&:before {
+			
+			.fa();
+			font-size: 1.3em;
+			content:@fa-var-times;
+			position: relative;
+			z-index: 2;
+			color: @white;
+			position: absolute;
+			width: 100%;
+			text-align: center;
+			right: 2%;
+			left: 2%;
+			top: 0;
+			
+			text-align: center;
+			
+		}
+
+		&:after {
+			.fa();
+			font-size: 1.3em;
+			content:@fa-var-circle;
+			position: absolute;
+			width: 100%;
+			text-align: center;
+			right: 2%;
+			left: 2%;
+			top: 1px;
+			z-index: 1;
+			color: @light;
+			transform:scale(1.5,1.5);
+			transition:transform 0.5s ease, color .5s ease;
+		}
+
+		&:hover {
+			&:after {
+				color: @dark;
+			}
+		}
+	}
+
+	.outside-zone {
+		position: fixed;
+		z-index: 0;
+		background: rgba(0,0,0,0.5);
+		width: 100%;
+		height: 100%;
+		left: 0;
+		top: 0;
+
+		cursor:pointer;
+
+
+	}
+}
+
+// overlay stuff
+//#3 CSS:
+//#3.1. Content is totally hidden from the window
+//#3.2 copy the styles from 
+
+
+div.wpcf7 {
+
+	@width : 50%;
+	@padding : 4%;
+	@margin : 1%;
+
+	background: @lightgrey;
+	overflow: hidden;
+	margin: 1em auto;
+
+	&:first-of-type {
+		margin-top: 0;
+	}
+	position: relative;
+
+	padding: @padding/2;
+
+
+	.wpcf7-display-none {
+		display: none;
+	}
+
+	h2 {
+		width:100%;
+		clear:both;
+		font-size:20px;
+	}
+
+
+	div.screen-reader-response {
+			display: none;
+	}
+
+
+	form.wpcf7-form {
+		white-space: nowrap;
+
+		
+		img.ajax-loader {
+			
+			left: 0;
+			right: 0;
+			z-index: 55;
+			margin: auto;
+			position: absolute;
+			bottom: 0;
+		}
+
+		// creates a column, this is for layout only, don't style the inputs within unless it's positioning
+
+		div + div + * {
+			&:before {
+				clear: both;
+				content: "";
+				display: block;
+			}
+		}
+		div {
+
+
+
+			label  {
+				position: absolute;
+				z-index: 3;
+				
+				font-weight: 700;
+				color: @highlight;
+				margin: 0;
+				top: @padding;// / 2; // this appears near the top as a result
+				left: @padding;
+				font-size: 0.9em;
+				transition:color .3s ease;
+				white-space: normal;
+				&.focus {
+					color: @highlight;
+				}
+
+				&.complete {
+					color: #99dd99;
+					&:after {
+						content:@fa-var-check;
+						.fa();
+						margin-left: 1em;
+					}
+				}
+			}
+
+			span.wpcf7-list-item {
+				display: block;
+				margin-top: -5px;
+				position: relative;
+				label {
+					position: relative;
+					.wpcf7-list-item-label {
+						padding-left: @padding * 3.5;
+					}
+				}
+
+			}
+
+			&.multi-checkbox {
+				width: 100%;
+
+				clear: both;
+				float: none;
+				&:after {
+					content: "";
+					display: block;
+					clear: both;
+				}
+				.wpcf7-list-item {
+					width: 45%;
+					float: left;
+				}
+			}
+
+			span.wpcf7-form-control-wrap {
+				input {
+
+				}
+
+				~ label {
+					
+				}
+			}
+
+			position: relative;
+			
+			width: @width - @margin - @margin;
+			float: left;
+			padding: 0;
+			border: none;
+			color: #000;
+			
+			font-weight: 700;
+			margin: @margin;
+
+			input {
+				// This assumes that the padding is needed becuase it's in the div, which means layout and labels and stuff.  A quick form doesn't need all this 'fat'
+				padding: 2px 10px; // @padding * 1.15 @padding @padding @padding;
+				width: 100% - @padding - @padding;
+
+
+			}
+
+			input[type='submit'] {
+				width:100%;
+				margin: auto;
+				padding: @padding (@padding*2);
+				display: block;
+				position: relative;
+			}
+
+			@media screen and (max-width: 700px) {
+				width: (@width * 2) - @margin - @margin;
+
+				input {
+					padding: (@padding/2) (@padding/2);
+					width: 100% - (@padding/2) - (@padding/2);
+
+				}
+
+				label {
+					left: @padding/2;
+					top: @padding / 4;
+				}
+			}
+
+
+			// custom stylings
+			#quote-details {
+
+					padding-top: 50px;
+					min-height: 200px;
+			}
+
+
+
+
+			// full width for textareas but you could use this for anything
+			
+
+
+			&.textarea {
+				width: (@width * 2) - @margin - @margin;
+
+				input {
+					padding: (@padding/2) (@padding/2);
+					width: 100% - (@padding/2) - (@padding/2);
+
+				}
+
+				textarea {
+					width: 100%;
+					box-sizing: border-box;
+					padding-top: 4%;
+					padding-left: @padding/2;
+					padding-right: @padding/2;
+				}
+
+				label {
+					left: @padding/2;
+					top: @padding / 4;
+				}
+
+				span[role=alert] {
+					position: absolute;
+					bottom: @padding / 2;
+					right: @padding/2;
+					font-size: 0.9em;
+					
+				}
+			}
+
+				
+
+			
+
+			
+		}
+
+
+		// inputs and fields
+		// general input field setup
+
+
+
+			input, textarea {
+				border: none;
+				
+				padding: @padding/4;
+				
+				margin: 0;
+
+				background:RGBA(255,255,255,0.7);
+				transition:background .4s ease;
+					margin:0;
+					color:@black;
+					
+					font-weight:bold;
+					height:40px;
+					.alpha-color(@light, 0.7);
+					border-bottom:solid 2px @alpha-color;
+
+
+				&:focus {
+					background: #ffffff;
+				}
+
+				
+
+				&:selection {
+					background: @light;
+				}
+
+			}
+
+			
+
+			.wpcf7-list-item {
+				line-height: 1;
+
+				label {
+					padding: .5em 0;
+				}
+			}
+			input[type='checkbox'], input[type='radio'] {
+
+				//display: none;
+
+				& + span {
+					width: 100%;
+					display: block;
+				}
+
+				& + span label {
+
+					position: relative;
+
+					display: block;
+					cursor: pointer;
+
+					width: 100%;
+					box-sizing: border-box;
+					padding: .5em 2% .5em 15%;
+
+					border-bottom: 2px solid transparent;
+					transition:border 0.4s ease, background 0.6s ease;
+
+					&:hover {
+						.lighten(@white);
+						background: @lighter;
+						&:before {
+							content: @fa-var-check-square;
+						}
+
+
+					}
+					
+					&:before {
+						
+						content: @fa-var-square-o;
+						color: @grey;
+						transition:color 0.4s ease;
+
+						z-index: 2;
+					}
+
+					&:after {
+						
+						content: "";
+
+						transition:text-shadow 0.4s ease, color 0.4s ease;
+						color: @white;
+						
+						
+						z-index: 1;
+
+						text-shadow: 0px 0px 0 @dark, 0px 0px 0 @dark, 0px 0px 0 @dark, 0px 0px 0 @dark;
+
+					}
+
+					&:after, &:before {
+						.fa();
+						font-size: 1.4em;
+						position: absolute;
+						width: 2%;
+						left: 2%;
+						top:50%;
+						transform: translateY(-50%);
+						
+					}
+				}
+
+				&:checked + span label {
+
+					.lighten(@white, 50, 0.7);
+						background: @highlight;
+						border-bottom: 2px solid @formbg;
+					
+					
+					color: @white;
+
+					&:before {
+						
+						content: @fa-var-check-square;
+						color: @light;
+	
+					}
+
+					&:after {
+						
+						content: @fa-var-square;
+						color: @dark;
+						text-shadow: 2px 2px 0 @dark, -2px -2px 0 @dark, 2px -2px 0 @dark, -2px 2px 0 @dark;
+					
+
+					}
+
+					&:hover {
+						.lighten(@white, 0, 0.5);
+						background: @white;
+					}
+				}
+			}
+
+
+
+
+
+			//label input[type='checkbox'], label input[type='radio'] {
+				//display: none;
+			//}
+
+
+
+			textarea {
+				height:80px;
+			}
+
+			
+
+		
+
+
+			// Font awesome helpers
+			label:before {	.fa();margin-right: 1em; }
+			label[for='email']:before { content: @fa-var-envelope; }
+			label[for='name']:before { content: @fa-var-user; }
+			label[for='telephone']:before { content: @fa-var-phone; }
+			label[for='venue']:before { content: @fa-var-bank; }
+			label[for='partydate']:before { content: @fa-var-calendar-o; }
+			label[for='message']:before { content: @fa-var-pencil; }
+			label[for='company']:before { content: @fa-var-group; }
+
+			
+
+			
+
+				
+				
+			.submit {
+				width: (@width * 2) - @margin - @margin;
+				background: none;
+				border: none;
+				
+			}		
+
+			input[type="submit"] {
+					background:@highlight;
+					border:none;
+					width: auto;
+
+					font-size:1em;
+					
+					height: auto;
+					position:relative;
+					margin:auto;
+					display: inline-block;
+					padding: @padding/2;
+				
+					border-bottom: 2px solid darken(@highlight, 20%);
+
+					color: @emphasis-text;
+
+					transition:background .3s ease;
+					&:hover {
+						
+						background: lighten(@highlight, 10%);
+					}
+				}
+			
+			&.textarea, &.submit {
+				clear:both;
+
+				width:98%;
+			}
+
+
+		// Completion stuff, i.e. it was sent, 
+
+		.wpcf7-response-output {
+			
+			width: 100% - @margin - @margin;
+			margin: @margin;
+			z-index: 55;
+			text-align: center;
+			font-size: 1.2em;
+			box-sizing: border-box;
+			padding: @margin * 2;
+			white-space: normal;
+		}
+
+
+		.wpcf7-mail-sent-ok {
+			background: @light;
+			position: absolute;
+			top: @padding/2;
+			left: @padding/2;
+			right: @padding/2;
+			bottom: @padding/2;
+			width: 100% - @padding;
+			box-sizing: border-box;
+			margin: auto;
+
+			font-size: 2em;
+
+			color: @black;
+
+			&:before {
+				.fa();
+				content: @fa-var-times;
+				position: absolute;
+				bottom:@padding;
+				right:@padding;
+				width: 4%;
+				text-align: right;
+				line-height: 1;
+				padding:2%;
+				color: @white;
+				z-index: 3;
+			}
+			/* &:after {
+				content: "dismiss";
+				position: absolute;
+				bottom:@padding;
+				right:@padding;
+				width: auto;
+				text-align: left;
+				background: rgba(0,0,0,0.5);
+				height: 5%;
+				padding: 2% 10% 2% 2%;
+				color: @white;
+				line-height: 0.7;
+				z-index: 2;
+				
+
+				
+
+			}
+
+			*/
+
+			cursor: pointer;
+			&:hover:after {
+			//		background: @highlight;
+				}
+
+
+		}
+
+		.wpcf7-mail-sent-ok,
+		.wpcf7-validation-errors,  
+		.wpcf7-spam-blocked {
+
+			background: rgba(59, 69, 94, 0.94);
+			color: @white;
+			
+		}
+
+				
+
+		span[role=alert] {
+			// error message
+			position: absolute;
+			box-sizing: border-box;
+			bottom: 0;
+			right: 0;
+			font-size: 0.9em;
+			color: @white;
+			background: RGBA(200,0,0,1);
+			padding: 0 @padding;
+			
+		}
+
+		input:focus + span[role=alert], textarea:focus + span[role=alert]  {
+			opacity: 0.5;
+		}
+
+	} // end of form
+		
+		
+		
+
+			
+			
+			
+		
+	@media screen and (max-width: 700px) { 
+		overflow: scroll;
+		top: 0;
+
+		h2 {
+			clear: none;
+		}
+
+		.close-form-popup {
+			float: right;
+			right: 0;
+			top: 0;
+			position: relative;
+
+		}
+
+		max-height: 100%;
+	}
+
+	
+	
+
+	
+
+}
+
+fieldset {
+  border:1px solid #c0c0c0;
+  margin:0 2px;
+  padding:0.35em 0.625em 0.75em;
+}
+legend {
+  border:0;
+  padding:0;
+}
+button {
+  font-family:inherit;
+  font-size:100%;
+  margin:0;
+  line-height:normal;
+  text-transform:none;
+  -webkit-appearance:button;
+  cursor:pointer;
+}
+input {
+  font-family:inherit;
+  font-size:100%;
+  margin:0;
+  line-height:normal;
+}
+select {
+  font-family:inherit;
+  
+  font-size:100%;
+  font-size:1em;
+  margin:0;
+  text-transform:none;
+  display:block;
+  height:40px;
+  line-height:40px;
+  padding:0 12px;
+  margin-bottom:14px;
+  color:#5c6b80;
+  border-radius:3px;
+  vertical-align:middle;
+  box-shadow:none;
+  border:0;
+  width:100%;
+  
+  background-color:@off-white;
+  -webkit-transition:background-color .24s ease-in-out;
+  transition:background-color .24s ease-in-out;
+  -webkit-appearance:none;
+  background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAHCAYAAADXhRcnAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpEOEZCMjYxMEYwNUUxMUUyOTI4REZGQTEzMzA2MDcyNiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpEOEZCMjYxMUYwNUUxMUUyOTI4REZGQTEzMzA2MDcyNiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkQ4RkIyNjBFRjA1RTExRTI5MjhERkZBMTMzMDYwNzI2IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkQ4RkIyNjBGRjA1RTExRTI5MjhERkZBMTMzMDYwNzI2Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+Vxkp9gAAAI9JREFUeNpidHFxucHAwKAOxE+AmJmBMPgLxDJAfJMFSKwD4kqoAClgA+P///8ZXF1dPaCGcBKh6QcQB+3evXs7WDMIAA2QB1I7gFgDj0aQFz2BGh+AOEwwUaDAQyBlCMR7cGjcC5KHaQQBuM3IAOiKTiBVhiTUDdRUhq4Oq2aoAelAahIQ5wM1zsCmBiDAADhYMJXVZ9u9AAAAAElFTkSuQmCC);
+  background-repeat:no-repeat;
+  background-position:97.5% center;
+}
+textarea {
+  font-family:inherit;
+  
+  font-size:100%;
+  font-size:1em;
+  margin:0;
+  overflow:auto;
+  vertical-align:top;
+  vertical-align:middle;
+  display:block;
+  height:40px;
+  line-height:40px;
+  line-height:1.5em;
+  padding:0 12px;
+  margin-bottom:14px;
+  color:#5c6b80;
+  border-radius:3px;
+  box-shadow:none;
+  border:0;
+  width:100%;
+  
+  max-width:100%;
+  background-color:@off-white;
+  -webkit-transition:background-color .24s ease-in-out;
+  transition:background-color .24s ease-in-out;
+  min-height:120px;
+}
+html input[type="button"], input[type="reset"], input[type="submit"] {
+  -webkit-appearance:button;
+  cursor:pointer;
+}
+button[disabled], html input[disabled] {
+  cursor:default;
+}
+input[type="checkbox"], input[type="radio"] {
+  box-sizing:border-box;
+  padding:0;
+}
+
+input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .field {
+  -webkit-appearance:textfield;
+  
+  display:block;
+  height:40px;
+  line-height:40px;
+  padding:0 12px;
+  margin-bottom:14px;
+  font-size:1em;
+  
+  border-radius:3px;
+  vertical-align:middle;
+  box-shadow:none;
+  border:0;
+  width:100%;
+  
+  
+  background-color:@off-white;
+  -webkit-transition:background-color .24s ease-in-out;
+  transition:background-color .24s ease-in-out;
+}
+input[type="search"] {
+  ::-webkit-search-cancel-button, ::-webkit-search-decoration {
+    -webkit-appearance:none;
+  }
+}
+button::-moz-focus-inner, input::-moz-focus-inner {
+  border:0;
+  padding:0;
+}
+
+/* LEGACY BONES STYLES FOR INPUTS 
+input[type="password"] {
+  display:block;
+  height:40px;
+  line-height:40px;
+  padding:0 12px;
+  margin-bottom:14px;
+  font-size:1em;
+  color:#5c6b80;
+  border-radius:3px;
+  vertical-align:middle;
+  box-shadow:none;
+  border:0;
+  width:100%;
+  
+  
+  background-color:@off-white;
+  -webkit-transition:background-color .24s ease-in-out;
+  transition:background-color .24s ease-in-out;
+  letter-spacing:0.3em;
+}
+input[type="text"]:focus, input[type="text"]:active, input[type="password"]:focus, input[type="password"]:active, input[type="datetime"]:focus, input[type="datetime"]:active, input[type="datetime-local"]:focus, input[type="datetime-local"]:active, input[type="date"]:focus, input[type="date"]:active, input[type="month"]:focus, input[type="month"]:active, input[type="time"]:focus, input[type="time"]:active, input[type="week"]:focus, input[type="week"]:active, input[type="number"]:focus, input[type="number"]:active, input[type="email"]:focus, input[type="email"]:active, input[type="url"]:focus, input[type="url"]:active, input[type="search"]:focus, input[type="search"]:active, input[type="tel"]:focus, input[type="tel"]:active, input[type="color"]:focus, input[type="color"]:active, select:focus, select:active, textarea:focus, textarea:active, .field:focus, .field:active {
+  background-color:@off-white;
+}
+input[type="text"].error, input[type="text"].is-invalid, input[type="password"].error, input[type="password"].is-invalid, input[type="datetime"].error, input[type="datetime"].is-invalid, input[type="datetime-local"].error, input[type="datetime-local"].is-invalid, input[type="date"].error, input[type="date"].is-invalid, input[type="month"].error, input[type="month"].is-invalid, input[type="time"].error, input[type="time"].is-invalid, input[type="week"].error, input[type="week"].is-invalid, input[type="number"].error, input[type="number"].is-invalid, input[type="email"].error, input[type="email"].is-invalid, input[type="url"].error, input[type="url"].is-invalid, input[type="search"].error, input[type="search"].is-invalid, input[type="tel"].error, input[type="tel"].is-invalid, input[type="color"].error, input[type="color"].is-invalid, select.error, select.is-invalid, textarea.error, textarea.is-invalid, .field.error, .field.is-invalid {
+  
+  background-position:99% center;
+  background-repeat:no-repeat;
+  background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo2NDM0NDREQkYwNEIxMUUyOTI4REZGQTEzMzA2MDcyNiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo2NDM0NDREQ0YwNEIxMUUyOTI4REZGQTEzMzA2MDcyNiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjQ3ODRGRkE2RjA0QTExRTI5MjhERkZBMTMzMDYwNzI2IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjY0MzQ0NERBRjA0QjExRTI5MjhERkZBMTMzMDYwNzI2Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+U8iT5wAAAedJREFUeNqk1U9I02Ecx/HtV3aIFAc1hcRDUoGXRAq0oNLA2CrsEFmHbikZu0iQYIFGYAiegkCpLipBxPpDEBMUzB0EhSG2LhG7hMR2GviPgUTvB57Bw8P3+U23B16HPX8+e/b8nt93wezZSMCnhXETF3AcB5BDCnH8Dq98ExcGHcFn8Ah3cdDni+fxnPDv9oAnTB7CKu6VCFXtChZy56LxUjt+jfuB8toSOth9wd7xWAWhqrUjYR/FRTwWJm+iIPT/w7bQf5ljiZnBg45dtKFX6H+LU8gIY8OEV6vgTkStwXWE8BPTGDHGPqNPz2mCfSOOYkA99TvCt1bhGPL68zMcwmncMuape10jrI+q4BbHi/FLn31S9z2x5tRhTc+1W506ipM+T3oRD4X+8+qtc4SqFvL0z/Fr14S+Szjis8bz9Lvvaq8cwS/wwGfdlqfPSWqTiFlX77o13u9Ym1PBs8JAytpRoy44X9Ft9E/gvbA+rYKn8NcaaMVc8UHgBw4b9/iqUQZ6hOAJFbyDcUflmsEX4a6+wTtHGfhAIUqa1U29Zc2BytouThD8x6xuN5CtMPi2CrXLZkZf/HyZoRFCP7n+QVR4PV7uI/AjGghN7OU/r1ilnqILtfpNC+o6vIFljBKYlhb/F2AAgaBsWR5wRiIAAAAASUVORK5CYII=);
+  outline-color:#fbe3e4;
+}
+input[type="text"].success, input[type="text"].is-valid, input[type="password"].success, input[type="password"].is-valid, input[type="datetime"].success, input[type="datetime"].is-valid, input[type="datetime-local"].success, input[type="datetime-local"].is-valid, input[type="date"].success, input[type="date"].is-valid, input[type="month"].success, input[type="month"].is-valid, input[type="time"].success, input[type="time"].is-valid, input[type="week"].success, input[type="week"].is-valid, input[type="number"].success, input[type="number"].is-valid, input[type="email"].success, input[type="email"].is-valid, input[type="url"].success, input[type="url"].is-valid, input[type="search"].success, input[type="search"].is-valid, input[type="tel"].success, input[type="tel"].is-valid, input[type="color"].success, input[type="color"].is-valid, select.success, select.is-valid, textarea.success, textarea.is-valid, .field.success, .field.is-valid {
+  
+  background-position:99% center;
+  background-repeat:no-repeat;
+  background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo2NDM0NDRERkYwNEIxMUUyOTI4REZGQTEzMzA2MDcyNiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo2NDM0NDRFMEYwNEIxMUUyOTI4REZGQTEzMzA2MDcyNiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjY0MzQ0NERERjA0QjExRTI5MjhERkZBMTMzMDYwNzI2IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjY0MzQ0NERFRjA0QjExRTI5MjhERkZBMTMzMDYwNzI2Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+7olkTQAAAfhJREFUeNqklU9oE0EUhzdroWjw0tBeWlDxkEaIp55TsCU9VKIgCrHBelA8CQ1Kr1WPbZrQ3gqtQqvGqxpQc2jBk6BIIaAGD4qNCKURpDSKiPi98gLDsJt//uBjsztvfnk7895sIPAw6/joGMThFJyAXn2+A+9gA57/TaY/eU0OeBgfhGm4DiGnsb7DAszxBz/NAdcKjMJLuNWCqagHbsscN5+L+hmH4QkMOe1L5jzFfNA2PgT34ajTuY7AGuZB0/hmh5m+gS0r8xv1zRvg+gGCHZiOwnF4DP3iB3sQkYxPd2C6CWfhB9Xwlus5+K1j4jXuaq3a+gM1H9OPcAa+7q9lPidZJqHbiIm7Wg22rsEI7FrPSzAMX/T+ADyAKSsu7Fr1KplehLvwCs5DvfBf65p+MypqRbO1FXK9utH4/QKuaqYTsG3E3INJv00Q46px3+XxanJ/Ute2/vqP4FKDza2KcdljIKdnhS0xXYULTaqmLMZFn8FFSFtvt6x70ExFCS5oUXspq2ssa7oEl1swFa+CGFdgtkHgPDyDKy02zyxNU6lXRUZb1EuHYayNNs+Yh5B0WQo+/8fpJnNTZFuzz2OpjoQ2QruSOQlMy35fEGmEGMxY9e1brxobw7TkWA1h6xfckUPb+JhGoE/Hpfvew7qUld/H9J8AAwDpw3WYrxcZ3QAAAABJRU5ErkJggg==);
+  outline-color:#e6efc2;
+}
+input[type="text"][disabled], input[type="text"].is-disabled, input[type="password"][disabled], input[type="password"].is-disabled, input[type="datetime"][disabled], input[type="datetime"].is-disabled, input[type="datetime-local"][disabled], input[type="datetime-local"].is-disabled, input[type="date"][disabled], input[type="date"].is-disabled, input[type="month"][disabled], input[type="month"].is-disabled, input[type="time"][disabled], input[type="time"].is-disabled, input[type="week"][disabled], input[type="week"].is-disabled, input[type="number"][disabled], input[type="number"].is-disabled, input[type="email"][disabled], input[type="email"].is-disabled, input[type="url"][disabled], input[type="url"].is-disabled, input[type="search"][disabled], input[type="search"].is-disabled, input[type="tel"][disabled], input[type="tel"].is-disabled, input[type="color"][disabled], input[type="color"].is-disabled, select[disabled], select.is-disabled, textarea[disabled], textarea.is-disabled, .field[disabled], .field.is-disabled {
+  cursor:not-allowed;
+  border-color:#cfcfcf;
+  opacity:0.6;
+}
+input[type="text"][disabled]:focus, input[type="text"][disabled]:active, input[type="text"].is-disabled:focus, input[type="text"].is-disabled:active, input[type="password"][disabled]:focus, input[type="password"][disabled]:active, input[type="password"].is-disabled:focus, input[type="password"].is-disabled:active, input[type="datetime"][disabled]:focus, input[type="datetime"][disabled]:active, input[type="datetime"].is-disabled:focus, input[type="datetime"].is-disabled:active, input[type="datetime-local"][disabled]:focus, input[type="datetime-local"][disabled]:active, input[type="datetime-local"].is-disabled:focus, input[type="datetime-local"].is-disabled:active, input[type="date"][disabled]:focus, input[type="date"][disabled]:active, input[type="date"].is-disabled:focus, input[type="date"].is-disabled:active, input[type="month"][disabled]:focus, input[type="month"][disabled]:active, input[type="month"].is-disabled:focus, input[type="month"].is-disabled:active, input[type="time"][disabled]:focus, input[type="time"][disabled]:active, input[type="time"].is-disabled:focus, input[type="time"].is-disabled:active, input[type="week"][disabled]:focus, input[type="week"][disabled]:active, input[type="week"].is-disabled:focus, input[type="week"].is-disabled:active, input[type="number"][disabled]:focus, input[type="number"][disabled]:active, input[type="number"].is-disabled:focus, input[type="number"].is-disabled:active, input[type="email"][disabled]:focus, input[type="email"][disabled]:active, input[type="email"].is-disabled:focus, input[type="email"].is-disabled:active, input[type="url"][disabled]:focus, input[type="url"][disabled]:active, input[type="url"].is-disabled:focus, input[type="url"].is-disabled:active, input[type="search"][disabled]:focus, input[type="search"][disabled]:active, input[type="search"].is-disabled:focus, input[type="search"].is-disabled:active, input[type="tel"][disabled]:focus, input[type="tel"][disabled]:active, input[type="tel"].is-disabled:focus, input[type="tel"].is-disabled:active, input[type="color"][disabled]:focus, input[type="color"][disabled]:active, input[type="color"].is-disabled:focus, input[type="color"].is-disabled:active, select[disabled]:focus, select[disabled]:active, select.is-disabled:focus, select.is-disabled:active, textarea[disabled]:focus, textarea[disabled]:active, textarea.is-disabled:focus, textarea.is-disabled:active, .field[disabled]:focus, .field[disabled]:active, .field.is-disabled:focus, .field.is-disabled:active {
+  background-color:#d5edf8;
+}
+*/

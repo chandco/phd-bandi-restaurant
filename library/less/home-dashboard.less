@@ -1,0 +1,414 @@
+@margin-right: 2%;
+
+
+	#home-left-sidebar {
+
+		
+	}
+
+	#weekly-menu-table{
+		
+
+		
+
+	}
+
+
+
+
+
+
+	
+
+
+
+.page-template-template-home {
+
+
+
+.right-content table, .left-content table {
+	width: 100%;
+	table-layout: fixed;
+	font-size: 0.75em;
+	line-height: 1.1;
+
+	
+	td:first-of-type:nth-last-of-type(6n) {
+		background: fade(white,80%);
+		color: @label-row-text;
+		text-align: left;
+		
+	}
+	
+	tr:first-of-type {
+		background: @day-row;
+		td {
+			color: @day-row-text;
+		}
+		min-height: 0;
+
+		td.today {
+			background: @today-day-row;
+			color: @today-day-text;
+		}
+
+		td:first-of-type:nth-last-of-type(6n) {
+			background: @white;
+		}
+	}
+
+	tr:nth-of-type(even) {
+		background: fade(black, 10%);
+	}
+
+	td {
+		padding: .8em;
+		width: 20%;
+		height: 80px; // just for some padding
+		vertical-align: top;
+		text-align: left;
+		border-left: 1px solid fade(white, 50%);
+
+		color: fade(black, 70%);
+
+		p {
+			margin-top: 0;
+		}
+		&:last-of-type {
+			border-right: none;
+		}
+
+		&.today {
+			color: black;
+			background: fade(white, 50%);
+			border-left: 1px solid @today-day-row;
+			border-right: 1px solid @today-day-row;
+
+			&:first-of-type {
+
+			}
+		}
+	}
+	@media screen and (min-width: 800px) {
+		
+	
+		tr:first-of-type td.today:first-child {
+			border:none;
+		}
+
+	}
+
+
+	
+
+
+}
+
+.table-prev,
+.table-next {
+	display: none;
+}
+
+
+.table-wrapper {
+
+	position: relative;
+
+	@media screen and (max-width: 800px) {
+		td:first-of-type:nth-last-of-type(6n) {
+			display: none;
+		}
+
+		
+
+
+	}
+
+	tr:last-of-type td {
+		border-bottom: 2px solid fade(black, 20%);
+	}
+
+
+	
+	@label: 35%;
+	.label-column {
+
+		width: @label;
+		position: absolute;
+		left: 0;
+		top: 0;
+		margin: 0 auto;
+		overflow: hidden;
+
+		table {
+			width: 100%;
+			margin: 0;
+		}
+
+		td:first-of-type:nth-last-of-type(6n) ~ td {
+			//width: 14%;
+		}
+
+		td:first-of-type:nth-last-of-type(6n) {
+			
+			display: block !important;
+			  width: 100% !important;
+			  overflow: hidden;
+			//width: 0.99%;
+			width: 20%;
+
+
+		}
+		tr:first-of-type td {
+			background: @white;
+		}
+	}
+
+	@media screen and (max-width: 800px) {
+		.label-column + .table-viewport {
+			width: 100% - @label;
+			left: @label;
+			position: relative;
+			margin: 0;
+		}
+
+	
+		.label-column {
+			left: 0%;
+
+			td {
+				display: none;
+
+			}
+
+			td:first-of-type {
+				display: block;
+			}
+		}
+
+		
+
+
+	}
+
+	@media screen and (max-width: 800px) {
+		
+	}
+	
+}
+
+@media screen and (min-width: 800px) { 
+	.label-column {
+		display: none;
+	}
+}
+
+@media screen and (max-width: 800px) {
+	.no-touch {
+		// ghetto browser hack to hide the scrollbar for desktops but not appear on mobiles
+		.table-wrapper {
+			&:after {
+				content: ""; 
+				width: 100%;
+				position: absolute;
+				bottom: 0;
+				height: 17px;
+				background: white;
+				left: 0;
+				right: 0;
+
+			}
+
+		}
+	}
+}
+
+
+@media screen and (max-width: 800px) {
+		
+		.table-wrapper {
+			width: 100%;
+			position: relative;
+			display: block;
+		  	
+
+			.table-prev,
+			.table-next {
+				position: absolute;
+				top: 20px;
+				height: 40px;
+				width: 40px;
+				background: @table-buttons;
+				border: none;
+				display: block;
+
+				i.fa {
+					position: absolute;
+					top: 50%;
+					transform:translateY(-50%);
+				}
+
+				
+				
+				color: @table-buttons-text;
+			}
+
+
+			.table-prev {
+				left: 0%;
+			}
+
+			.table-next {
+				right: 0%;
+			}
+
+			
+
+			.table-viewport {
+				display: block;
+		  		width: 100%;
+		  		margin: auto;
+		  		position: relative;
+		  		overflow-x: scroll;
+
+
+		  		table {
+				width: 500%;
+				table-layout: fixed;
+				overflow-x: scroll;
+				&::-webkit-scrollbar { 
+				    display: none; 
+				}
+				margin: 0;
+					tr {
+						width: 100%;
+						position: relative;
+						
+
+						td {
+							width: 20%;
+							padding: .5em 1%;
+						}
+					}
+
+
+					td:first-of-type:nth-last-of-type(6n) {
+						display: none;						
+					}
+				}
+			}
+
+			
+
+
+		  	
+			
+		}
+	
+
+}	
+
+} // page template home
+
+
+.no-flexbox, .no-js {
+	.page-template-template-home {
+		.right-content table, .left-content table {
+			// fixes for <IE10
+			table-layout: inherit;
+
+			td {
+				width: auto;
+			}
+		}		
+	}
+
+	&.no-cssanimations { // really old
+		.row {
+			width: 100%;
+			overflow: hidden;
+
+			.col-smart {
+				width: 50%;
+				float: left;
+				
+
+				&:nth-child(4n+1) {
+					clear: left;
+				}
+			}
+		}
+
+
+	}
+}
+
+
+
+
+
+.page-template-default .page-title {
+	text-align: left;
+}
+
+.page #inner-content .full-width-background.yellow {
+	margin-top: 2em;
+	background: @blue;
+}
+
+
+
+
+.column {
+  display: block;
+  float: left;
+  margin: 10px 0;
+}
+
+.column.col-2 h2 {
+color: #99cc00;
+}
+.column.col-2 {
+  width: 45%;
+  padding: 2%;
+  /*
+
+		((width + padding left + padding right) x 2 columns) + margin between the two
+
+		means (2 x (45 + 2 + 2)) + 2 = 100% - hence the full width of its container
+
+		*/
+}
+.column.col-2:nth-child(2n) {
+  margin-left: 2%;
+  /* make add a space to the left of every second column */
+}
+.column.col-2:nth-child(2n+1) {
+  clear: left;
+  /* make sure this wraps properly after two columsn, for 3rd forth etc */
+}
+@media screen and (max-width: 600px) {
+  .column.col-2 {
+    width: 96%;
+  }
+  .column.col-2:nth-child(2n) {
+    margin-left: 0;
+    /* make add a space to the left of every second column */
+  }
+}
+
+.prices {
+  /* adjust widths of columns to make sure everything fits */
+  width: 100%;
+  padding: 0;
+  margin: 10px 0;
+}
+.prices .drink {
+  width: 50%;
+}
+.prices .abv {
+  width: 20%;
+}
+.prices .price {
+  text-align: right;
+}

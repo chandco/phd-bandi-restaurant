@@ -1,0 +1,52 @@
+#printlogo {
+	display: none;
+}
+	@media print {
+
+	* {-webkit-print-color-adjust:exact;}
+
+	.header {
+		background: none !important;
+		height: 70px;
+	}
+
+	.header #inner-header #logo {
+		display: none;
+	}
+
+	#printlogo {
+		display: block;
+		position: relative;
+		margin: auto;
+		width: 100%;
+		img {
+			height: 70px;
+			width: auto;
+			display: block;
+			position: relative;
+			margin: auto;
+		}
+	}
+
+	body {
+		color: #000 !important;
+		background: #fff !important;
+	}
+	#cta-sidebar,
+	.header #inner-header nav[role="navigation"],
+	.slick-slider,
+	.feature,
+	.secondary-links,
+	#inner-footer,
+
+
+	 {
+		display: none;
+	}
+
+	.header {
+		position: relative !important;
+	}
+
+	.licapacities('black');
+}

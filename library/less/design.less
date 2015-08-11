@@ -1,0 +1,326 @@
+* {
+  //background: fade(black, 5%);
+}
+
+// use mixins to make cleaner CSS, but keep the config here.
+
+.body-style() {
+	color: @default-text;
+	background: #fff; //@body-background; // may want image.
+  
+}
+
+
+
+
+hr {
+  border: none;
+  border-top: 1px solid fade(@red, 50%);
+  margin-bottom: -.8em;
+}
+
+.green hr {
+  border-top: 1px solid fade(@black, 50%);
+}
+
+
+
+#container {
+  // top: @header-height-px;
+  position: relative;
+ 
+  margin-bottom: @header-height-px;
+
+
+  padding-top: 6.5em;
+
+  min-height: 400px;
+  @media screen and (max-width: @tablet-break) {
+    padding-top: 0;
+  }
+}
+
+.blog, .archive, .single-post {
+  #container {
+    padding-top: 140px;
+  }
+}
+
+#carousel {
+  position: relative;
+  // margin-top: -3em;
+  margin-bottom: 1em;
+}
+
+
+#blog-sidebar {
+  top: -60px;
+  padding-top: 60px;
+  
+  padding-left: 10px;
+  
+  background: @body-background;
+
+  &:before {
+    position: fixed;
+    height: 100%;
+    
+    // border-left: 2px solid fade(black, 20%);
+    box-shadow: -5px 0 10px -4px rgba(0, 0, 0, 0.29);
+    z-index: -1;
+    width: 40px;
+    background: @body-background;
+
+    top: 0;
+    @pseudo-offset: ( ( @max-central-width * (100% - @global-sidebar-width - @global-sidebar-margin) ) / 100 ) + 20px;
+    
+    
+    left: ~"calc( ((100vw - @{max-central-width} ) / 2) + @{pseudo-offset})";
+
+    @media screen and (max-width: @max-central-width) {
+      left: (100% - @global-sidebar-width - (@global-sidebar-margin / 2));
+    }
+
+    @media screen and (max-width: 900px) {
+      display: none;
+    }
+    content: "";
+    
+  }
+
+}
+
+
+.admin-bar {
+  .header {
+    top: 32px !important;
+  }
+
+
+  #container {
+   // top: @header-height-px + 32px !important;
+    //position: relative;
+   // margin-bottom: @header-height-px + 32px !important;
+  }
+}
+
+
+
+.page-template-template-home #content {
+  margin-top: @header-height-px;
+}
+
+.nav-li-style() {
+  margin: 0; // it's coming from the right so the trailing margin is fine
+  
+  height: 100%;
+  background: rgba(0,0,0,0.2); // debug
+
+  border-right:2px solid transparent;
+  background-clip: border-box; 
+
+
+
+  a {
+    padding: 5px 1em;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+
+  .sub-menu, .children {
+     right: -2px !important; // account for the border
+  }
+  &:hover {
+    
+
+    .sub-menu, .children {
+      padding: 0;
+      border-right:2px solid RGBA(0,0,0,0.4);
+      border-bottom: 2px solid RGBA(0,0,0,0.4);
+     
+      background-clip: border-box; 
+    }
+  }
+}
+
+
+
+.popup-styles() {
+  // this is for the popup mobile menu: #popup-menu-container is this basically.  
+
+  // because CTA exists:
+  top: @header-height-px;
+
+  padding-top: 5px;
+
+  nav[role="navigation"] .nav > li {
+    border-right: none !important;
+  }
+
+  ul {
+
+      border-right: none !important;
+      border-bottom: none !important;
+
+  }
+
+
+}
+
+.nav-li-children-style() {
+  margin: 0; // it's coming from the right so the trailing margin is fine
+  
+}
+
+body {
+	.body-style();
+}
+
+
+.nav-font-style() {
+  
+  color: inherit;
+}
+
+
+.col-smart .wp-caption {
+  width: 100% !important;
+  padding-bottom: 55% !important;
+
+  overflow: hidden;
+
+  img {
+    position: absolute;
+    top: 0;
+
+    width: 100%;
+    height: auto;
+  }
+
+  .wp-caption-dd {
+    margin-bottom: 0;
+  }
+}
+
+
+.full-width-background-maker(@color : RGBA(0,0,0,0.5)) {
+	position: relative;
+	padding-top: 2em;
+	padding-bottom: 2em;
+  margin: 3em 0;
+
+  &:before {
+    content: "";
+    width: 4000px;
+    left: -1000px;
+    background: @color;
+    top: 0;
+    bottom: 0;
+    display: block;
+    position: absolute;
+    z-index: -1;
+  }
+}
+
+.page #content {
+	width: 100%;
+  
+
+  padding-top: 1em;
+
+ 
+
+ 
+  
+}
+
+p:empty + p {
+  margin-top: 1em;
+}
+
+p:empty {
+  display:none;
+}
+
+p:empty + .gallery {
+  margin-top: 0;
+}
+
+
+body {
+  .colours-bg();
+}
+
+
+.page #inner-content .entry-content > .full-width-background:first-child {
+  margin-top: 0;
+}
+
+.page #inner-content {
+	 
+  
+    .entry-content > *, .article-header > * {
+      .max-central;
+    }
+
+    .full-width-background {
+
+      margin: 2em auto;
+      padding: 2em 0;
+      max-width: 100%;
+
+
+
+      > * {
+        .max-central;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+
+
+
+
+
+      @media screen and (max-width: @max-central-width) {
+        width: 100%;
+      }
+
+      > h1, > h2, > h3, > h4 {
+        margin-top: 0;
+      }
+      
+      background: @light;
+
+      .colours-bg();
+  
+
+      & > h2 {
+        margin-top: 0;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+        //padding-bottom: 4em;
+      }
+    }
+
+
+    .full-width-background + .full-width-background {
+      margin-top: -2em;
+    }
+
+}
+
+
+/// this is a bit hacky but ti'll work
+.purple, .green, .black {
+  .licapacities('white');
+}
+
+
+#container {
+  margin-bottom:0;
+}

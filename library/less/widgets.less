@@ -1,0 +1,258 @@
+.widgettitle {
+  padding-bottom: 1em;
+  
+  border-bottom: 2px solid @light;
+  margin-bottom: 1em;
+
+  color: @light;
+  text-align: center;
+}
+
+
+
+
+
+
+
+.widget {
+  padding: 0 10px;
+  padding-bottom: 1em;
+  margin: 0 0 2.2em 0; 
+  background: @widget-background;
+  color: @widget-color;
+  border-bottom: 2px solid fade( darken(@widget-background, 10%), 20% );
+  border-radius: 4px;
+
+  input[type="text"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .field {
+    background: fade(black, 20%);
+  }
+}
+  .widget ul li {
+    margin-bottom: 0.75em;
+    /* deep nesting */ }
+    .widget ul li ul {
+      margin-top: 0.75em;
+      padding-left: 1em; }
+
+
+.widgettitle {
+ 
+color: @widget-title;
+  margin-top: 0;
+  padding-bottom: 0.5em;
+}
+
+.footer .widgettitle {
+  color: @footer-widgettitle;
+}
+
+.widget_categories {
+
+  .widgettitle {
+    margin-bottom: 0;
+  }
+  ul {
+    padding: 0;
+    margin: 0;
+    
+    //border-bottom: 2px solid fade(@dark, 20%);
+  }
+  .cat-item {
+    list-style-type: none;
+    padding: 0;
+
+    margin: 0;
+
+    &:nth-of-type(n+2) {
+      border-top: 1px solid fade(@dark, 20%);
+    }
+
+    a {
+      display: block;
+      padding: 0.3em;
+      color: @link-color;
+      position: relative;
+      &:after {
+        content: "";
+        display: block;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        transition: transform 0.3s ease;
+        transform-origin: bottom;
+        transform:scale(1,0);
+        background: fade(@highlight, 10%);
+        position: absolute;
+      }
+
+      &:hover {
+        &:after {
+          transform:scale(1,1);
+        }
+      }
+    }
+
+  }
+}
+
+.tagcloud {
+
+  a {
+    color: @lighter-grey;
+    padding: 3px;
+    margin: 0 4px;
+    .alpha-color(@lighter,0.5);
+    border-bottom: 1px solid @alpha-color;
+    position: relative;
+    display: inline-block;
+
+    &:after {
+        content: "";
+        display: block;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        transition: transform 0.3s ease;
+        transform-origin: bottom;
+        transform:scale(1,0);
+        background: RGBA(255,255,255,0.4);
+        position: absolute;
+      }
+
+      &:hover {
+        &:after {
+          transform:scale(1,1);
+        }
+      }
+  }
+}
+
+
+.widget_recent_entries{
+  > ul {
+      list-style-type: none;
+      padding: 0;
+
+      margin: 0;
+
+
+      > li {
+        
+        padding: .3em 0;
+
+        border-top: 1px solid fade(black, 50%);
+        &:first-of-type {
+          border-top:none;
+        }
+
+        margin: 0;
+
+      }
+  }
+
+   
+}
+
+
+
+
+#footer-sidebar {
+  
+
+  width: 100%;
+
+  display: flex;
+
+  @media screen and (max-width: @tablet-break) {
+    display: block;
+  }
+
+
+  .custom-recent-posts {
+    // background: #00f;
+
+    .post-list {
+      padding: 0;
+         
+
+      @media screen and (min-width: @mobile-break) {
+        .flex-container(2);   
+      }
+
+      @media screen and (max-width: @mobile-break) {
+        .flex-container(1);   
+      }
+
+
+
+    }
+  }
+ 
+    // @media screen and (min-width: 1400px) {
+    //   .flex-container(4);   
+    // }
+
+    // @media screen and (max-width: 1400px) and (min-width: @tablet-break) {
+    //   .flex-container(3);   
+    // }
+    
+
+
+
+  .widget {
+
+    margin-right: 5%;
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      padding-bottom: .5em;
+      border-bottom: 2px solid @light;
+    }
+    
+
+    background: none;
+    border-bottom: none;
+    
+    // flex-grow: 1;
+    // flex-shrink:0;
+     width:100%;
+     
+
+    //   .post-list {
+
+    //   }
+  }
+}
+
+.no-flexbox, .no-js {
+
+  #footer-sidebar {
+    overflow: hidden;
+    .widget {
+      width: 44.5%;
+      float: left;
+    }
+    .custom-recent-posts {
+      .post-list {
+        clear: both;
+        overflow: hidden;
+
+        .post-preview {
+
+          width: 48%;
+          float: left;
+          margin-right: 1%;
+
+        }
+        
+      }
+    }
+
+  }
+}

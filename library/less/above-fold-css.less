@@ -1,0 +1,22 @@
+@import "variables"; // colour and so on,  - try and avoid any actual style here, this should be for config only
+@import "mixins"; //tools and so on.
+
+
+// configure things here, like colours fonts sizes of things etc but generally not the UX or arrangement of things
+@import "design"; // colours and some stuff like borders and so on - not necessarily layout
+@import "typography"; // setting fonts in places
+
+// Components is things like colouring and styling your basic links
+// Or standard input[type=submit] or whatever elements that might appear 'anywhere' and aren't specific to their location
+
+// Layout and styling by section:
+@import "header";
+@import "navigation";
+@import "carousel";
+@import "slick";
+@import "layout"; // skeleton of main website 
+
+@import "cta-sidebar"; // persistant CTA for contact us
+
+
+

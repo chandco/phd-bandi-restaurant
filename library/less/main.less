@@ -1,0 +1,75 @@
+@import "font-awesome/less/font-awesome";
+
+@import "variables"; // colour and so on,  - try and avoid any actual style here, this should be for config only
+
+@import "bones"; // legacy bones styles, we've not deleted it in case we need something from it.
+@import "ie"; // we need to check what we need from this
+
+@import "mixins"; //tools and so on.
+@import "editor-style-mixins";
+@import "capacities";
+.editor-styles();
+
+
+// configure things here, like colours fonts sizes of things etc but generally not the UX or arrangement of things
+@import "design"; // colours and some stuff like borders and so on - not necessarily layout
+@import "typography"; // setting fonts in places
+
+
+
+
+// Components is things like colouring and styling your basic links
+// Or standard input[type=submit] or whatever elements that might appear 'anywhere' and aren't specific to their location
+@import "components";
+@import "columns"; // generally strtucture and layout stuff but most specifically the shortcode columns system.
+// Layout and styling by section:
+
+
+@import "header";
+@import "navigation";
+@import "layout"; // skeleton of main website 
+
+@import "content"; // may need to be more granular with this eg single page, treat like wp style templating
+@import "blog"; // for archive pages generally
+
+// THEME SPECIFIC:
+// Capacities for venues.  Not necessarily something to export to other themes 
+
+
+@import "gallery"; // wordpress gallery.  This assumes we're re-writing the gallery HTML to be HTML5 and stuff.
+
+// WIDGET AND SIDEBAR BEHAVIOUR
+@import "widgets"; // includes the styling for footer widgets, as they're just basic widget stuff.
+@import "cta-sidebar"; // persistant CTA for contact us
+@import "secondary-links-widgets"; // for the widgets on most pages
+
+@import "homepage"; // probably won't need much here
+@import "page";
+
+
+/*
+	@import "single-post";
+	@import "archive-post";
+	@import "metadata"; // perhaps this is too specific
+
+*/
+
+@import "slick"; // required for carousel, but won't really need changing ever.
+@import "carousel"; // for use with shortcodes and templates
+@import "magnific-popup";
+
+@import "comments";
+
+@import "footer"; 
+
+@import "contact-form-seven"; // input fields are styled generically in here but there's an emphasis on cf7
+@import "gravity-forms"; // input fields are styled generically in here but there's an emphasis on cf7
+
+
+// print styles
+//@import "print";
+
+
+//template styles 
+@import "wiki"; 
+@import "home-dashboard"; 

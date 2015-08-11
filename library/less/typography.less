@@ -1,0 +1,108 @@
+
+
+
+body {
+	font-family:@body-font;
+}
+
+h1, h2, h3, h4  {
+  font-family:@h-font;
+  font-weight: normal;
+}
+
+h5, h6 {
+  font-weight: bold;
+  font-family: @body-font;
+  font-size: 1.2em;
+}
+@import "gridlover"; // generate on gridlover.net
+
+
+a {
+  background:transparent;
+  text-decoration: none;
+  color:@link-color;
+}
+a:focus {
+  outline:thin dotted;
+  color:@link-color;
+}
+a:active {
+  outline:0;
+}
+a:hover {
+  outline:0;
+  color:@link-color;
+}
+
+
+a:visited {
+  color:@link-color;
+}
+a:hover, a:visited:hover, a:visited:focus {
+  color:lighten(@link-color, 10%);
+}
+a:link, a:visited:link {
+  -webkit-tap-highlight-color:rgba(0,0,0,0.3);
+ 
+    font-weight: bold;
+}
+
+
+a[href^="mailto:"] {
+  white-space: nowrap;
+}
+
+
+
+
+.right-content, .left-content {
+
+  h3 {
+    font-size: 1.5em;
+  }
+
+  h4 { 
+    
+    text-transform: uppercase;
+   
+
+    + h6 {
+      &:last-child {
+        margin-bottom:10px;
+      }
+    }
+  }
+
+  h5 {
+    font-size: 1em;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+
+    + h6 {
+      margin-bottom: 10px;
+    } 
+  }
+
+
+
+  h6 {
+    font-size: 0.8em;
+    margin: 0 auto;
+    font-weight: normal;
+  }
+}
+
+
+
+
+
+strong, b {
+  font-weight: 700;
+  
+}
+
+
+ul li + li {
+  margin-top: 0.5em;
+}
