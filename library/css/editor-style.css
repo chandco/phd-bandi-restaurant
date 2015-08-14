@@ -1834,6 +1834,7 @@
   }
 }
 .feature {
+  margin-bottom: 0.5em;
   text-decoration: none;
   position: relative;
   width: 100%;
@@ -1919,6 +1920,7 @@
   text-align: left;
   -webkit-transition: background 0.2s ease;
           transition: background 0.2s ease;
+  border-bottom: none;
 }
 .feature div.content {
   box-sizing: border-box;
@@ -1937,20 +1939,21 @@
 .feature .content h2 {
   position: absolute;
   text-align: left;
-  width: auto;
-  bottom: 40px;
+  width: 60% !important;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
   padding: 0.5em;
-  top: auto;
-  font-size: 1.5em;
+  font-size: 1.8em;
+  line-height: 1;
   color: #ffffff;
-  font-family: 'ITC Tabula W01', sans-serif;
+  font-family: 'Neue Helvetica W01', sans-serif;
   text-transform: uppercase;
+  text-align: center;
   margin: auto;
   left: 0;
   right: 0;
-  background: rgba(0, 0, 0, 0.5);
-  background: -webkit-linear-gradient(0, rgba(0, 0, 0, 0.6) 50%, transparent);
-  background: linear-gradient(0, rgba(0, 0, 0, 0.6) 50%, transparent);
 }
 .feature .copy {
   color: #ffffff;
@@ -1963,24 +1966,20 @@
   right: 0;
   padding: 0 0.5em;
   font-size: 1em;
-  font-family: 'comic sans', 'ITC Tabula W01', sans-serif;
+  font-family: 'Neue Helvetica W01', sans-serif;
   text-align: left;
   border-top: 1px solid rgba(255, 255, 255, 0.5);
 }
 .feature .copy p:first-letter {
   font-size: 1em !important;
-  font-family: 'comic sans', 'ITC Tabula W01', sans-serif;
+  font-family: 'Neue Helvetica W01', sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 .col-smart:first-child:nth-last-child(4) ~ .col-smart .feature .content h2,
 .col-smart:first-child:nth-last-child(4) .feature .content h2 {
   font-size: 1em;
   line-height: 1;
-  bottom: 26%;
-}
-.col-smart:first-child:nth-last-child(4) ~ .col-smart .feature .copy,
-.col-smart:first-child:nth-last-child(4) .feature .copy {
-  top: 70%;
-  bottom: auto;
 }
 .row,
 .cf_columns,
@@ -2372,7 +2371,7 @@ body#tinymce.wp-editor {
   font-size: 1em;
   line-height: 1.2em;
   -webkit-font-smoothing: antialiased;
-  font-family: 'ITC Tabula W01', sans-serif;
+  font-family: 'Neue Helvetica W01', sans-serif;
   /* normalize.css 2012-07-07T09:50 UTC - http://github.com/necolas/normalize.css */
   /* ==========================================================================
      HTML5 display definitions
@@ -2819,10 +2818,10 @@ body#tinymce.wp-editor .col-smart p:first-child a.cta:first-child {
 }
 body#tinymce.wp-editor a.cta,
 body#tinymce.wp-editor a.cta-inline {
-  background: #d28cb8;
+  background: #00245d;
   color: #ffffff !important;
   max-width: 97%;
-  font-family: 'comic sans', 'ITC Tabula W01', sans-serif;
+  font-family: 'Neue Helvetica W01', sans-serif;
   font-weight: normal;
   position: relative;
   padding: 0.5em 1em 0.5em 1em;
@@ -2897,11 +2896,11 @@ body#tinymce.wp-editor h1,
 body#tinymce.wp-editor h2,
 body#tinymce.wp-editor h3,
 body#tinymce.wp-editor h4 {
-  font-family: 'comic sans', 'ITC Tabula W01', sans-serif;
+  font-family: 'Neue Helvetica W01', sans-serif;
 }
 body#tinymce.wp-editor h5,
 body#tinymce.wp-editor h6 {
-  font-family: 'ITC Tabula W01', sans-serif;
+  font-family: 'Neue Helvetica W01', sans-serif;
   font-weight: bold;
 }
 body#tinymce.wp-editor h3 {

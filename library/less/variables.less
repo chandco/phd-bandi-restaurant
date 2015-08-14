@@ -34,12 +34,14 @@
 // COLOURS
 @this-website: ~'http://ornc.local'; // this will have to change 
 
-@body-font : 'ITC Tabula W01', sans-serif;
-@h-font : 'comic sans', 'ITC Tabula W01', sans-serif;
+@body-font : 'Neue Helvetica W01', sans-serif;
+@h-font : 'Neue Helvetica W01', sans-serif;
 
 
 .h-font() {
 	font-family: @h-font;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 .body-font() {
@@ -69,7 +71,7 @@
 @emphasis : @darkblue;
 @emphasis-text: @white; // if @emphasis was a background etc.
 
-@link-color : #D28CB8;
+@link-color : @blue;
 
 // general colour as a default - this just sets the body tag
 @default-text : @darkgrey;
@@ -83,7 +85,7 @@
 @formbg : @lightblue;
 
 // Header Styles and sizes
-@header-background: fade(@black, 100%);
+@header-background: @blue;
 @header-logo-tab-bg: transparent;
 
 // sidebars
@@ -115,13 +117,13 @@
 @footer-menu-hover: fade(@lightgrey, 10%);
 @footer-link-color: @white;
 
-@footer-nav-current-text: @blue;
+@footer-nav-current-text: @red;
 @footer-nav-current-background: rgba(0,0,0,0.05);
 
 // carousel styles
 @cycle-carousel-width : 100%;
-@carousel-next-fa-icon : @fa-var-chevron-right;
-@carousel-prev-fa-icon : @fa-var-chevron-left;
+@carousel-next-fa-icon : @fa-var-angle-right;
+@carousel-prev-fa-icon : @fa-var-angle-left;
 @skip-offset : 5%;
 @skip-button-color : RGBA(255,255,255,0.8);
 @carousel-aspect-ratio : (4 / 6);

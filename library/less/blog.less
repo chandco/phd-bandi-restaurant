@@ -113,7 +113,9 @@
 
 	.post-preview {
 		width: 48%; // assumes 4, might have to fix this for other parents
-		margin-bottom: 3em;
+		
+		margin-bottom: 1.5em;
+		
 	}
 
 }
@@ -189,9 +191,27 @@
 .post-preview {
 	display: block;
 	background: white;
-	padding-bottom: 30px;
-
+	padding-bottom: 60px;
+	margin-top: 0 !important;
 	&:after {
+
+	}
+
+	.read-more {
+		position: absolute;
+		left: 0;
+		right: 0;
+		background: @blue;
+		color: #fff;
+		text-align: center;
+		text-transform: uppercase;
+		bottom: 0;
+		a {
+			color: #fff;
+			display: inline-block;
+			padding: 10px;
+		}
+
 
 	}
 
@@ -228,6 +248,7 @@
 		z-index: 5;
 		position: relative;
 		color: inherit !important;
+		min-height: 72px;
 
 	}
 

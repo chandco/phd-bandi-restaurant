@@ -104,8 +104,29 @@
 		}
 	}
 }
+
+
+#carousel {
+	.max-central();
+
+		height: 0;
+		padding-bottom: 40.25%;
+
+		@media screen and (min-width: 1200px) {
+			padding-bottom: 1200px * .4025;
+		}
+
+	
+}
 .cycle-slideshow {
 
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+
+	
 		.tooltip {
 			position: absolute;
 			top: 0;
@@ -124,10 +145,10 @@
 			opacity: 1;
 		}
 
-		position: relative;
-		width: @cycle-carousel-width;
+		
+		
+		
 
-		height: @carousel-height;
 		max-height: @carousel-max-height;
 
 		@media screen and (max-width: 930px) {

@@ -63,25 +63,44 @@
 			transform:translateY(-50%);
 			cursor: pointer;
 			
+			&:after {
+				position: absolute;
+				content: "";
+				background: transparent;
+				border: 1px solid #fff;
 
+				border-radius: 50%;
 
-
-
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+			}
 
 			&:before {
-				color: @skip-button-color;
+				color: #fff;
 				.fa-icon();
-				font-size: 3em;
-				text-shadow: 1px 1px 2px rgba(59, 69, 94, 0.23);
+				font-size: 40px;
+				line-height: 30px;
+				// text-shadow: 1px 1px 2px rgba(59, 69, 94, 0.23);
 				width: 100%;
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 50%;
+				transform: translateY(-50%);
+				text-align: center;
 				
 			}
 		}
 
 		.slick-next {
 			right: @skip-offset;
-			right: 15vw;
-			text-align: right;
+			right: 30px;
+			text-align: center;
+			width: 60px;
+			height: 60px;
+			overflow: hidden;
 			&:before {
 				content: @carousel-next-fa-icon;
 		
@@ -93,8 +112,11 @@
 
 		.slick-prev {
 			left: @skip-offset;
-			left: 15vw;
-			text-align: left;
+			left: 30px;
+			text-align: center;
+			width: 60px;
+			height: 60px;
+			overflow: hidden;
 			&:before {
 				content:  @carousel-prev-fa-icon;
 			}

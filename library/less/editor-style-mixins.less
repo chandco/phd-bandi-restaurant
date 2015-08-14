@@ -198,6 +198,8 @@ a div.feature {
 
 .feature {
 
+  margin-bottom: 0.5em;
+
   > p {
     display: none; // Stupid wordpress
   }
@@ -316,6 +318,7 @@ a div.feature {
       font-size: 1.2em;
       text-align: left;
       transition:background 0.2s ease;
+      border-bottom: none;
     }
 
   
@@ -346,19 +349,22 @@ a div.feature {
     left: 0;
     text-align: left;
     
-    width: auto;
-    bottom: 40px;
+    width: 60% !important;
+
+    top: 50%;
+    transform: translateY(-50%);
+
     padding: 0.5em;
-    top: auto;
-    font-size: 1.5em;
+    font-size: 1.8em;
+    line-height: 1;
     color: #ffffff;
     font-family: @body-font;
     text-transform: uppercase;
+    text-align: center;
     margin: auto;
     left: 0;
     right: 0;
-    background: fade(black, 50%);
-    background: linear-gradient(0,fade(black,60%) 50%, transparent);
+   
   }  
 
 
@@ -393,12 +399,12 @@ a div.feature {
     .content h2 {
       font-size: 1em;
       line-height: 1;
-      bottom: 26%;
+      //bottom: 26%;
     }
 
     .copy {
-      top: 70%;
-      bottom: auto;
+      //top: 70%;
+      //bottom: auto;
     }
   }
 }
