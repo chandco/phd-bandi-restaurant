@@ -1960,21 +1960,16 @@
   background: rgba(0, 0, 0, 0.6);
   position: absolute;
   bottom: 0%;
-  height: 40px;
+  height: auto;
+  font-weight: normal !important;
   width: auto;
   left: 0;
   right: 0;
-  padding: 0 0.5em;
+  padding: 0.2em 0.5em;
   font-size: 1em;
   font-family: 'Neue Helvetica W01', sans-serif;
   text-align: left;
   border-top: 1px solid rgba(255, 255, 255, 0.5);
-}
-.feature .copy p:first-letter {
-  font-size: 1em !important;
-  font-family: 'Neue Helvetica W01', sans-serif;
-  font-weight: bold;
-  text-transform: uppercase;
 }
 .col-smart:first-child:nth-last-child(4) ~ .col-smart .feature .content h2,
 .col-smart:first-child:nth-last-child(4) .feature .content h2 {
@@ -2632,21 +2627,16 @@
   background: rgba(0, 0, 0, 0.6);
   position: absolute;
   bottom: 0%;
-  height: 40px;
+  height: auto;
+  font-weight: normal !important;
   width: auto;
   left: 0;
   right: 0;
-  padding: 0 0.5em;
+  padding: 0.2em 0.5em;
   font-size: 1em;
   font-family: 'Neue Helvetica W01', sans-serif;
   text-align: left;
   border-top: 1px solid rgba(255, 255, 255, 0.5);
-}
-.admin_page_columns-box-edit #wpcontent .feature .copy p:first-letter {
-  font-size: 1em !important;
-  font-family: 'Neue Helvetica W01', sans-serif;
-  font-weight: bold;
-  text-transform: uppercase;
 }
 .row {
   width: 100%;

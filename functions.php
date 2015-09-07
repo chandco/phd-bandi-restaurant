@@ -96,7 +96,16 @@ add_filter("the_content", "BBG_WrapStuff", 0);
 
 
 
+
 function BBG_WrapStuff( $post ) {
+	$array = array (
+      "{gallery" => "[gallery",
+      "{feature-box" => "[feature-box"
+	);
+
+	$post = strtr($post, $array);
+
+	$post = strtr($post, $array);
 
 	$pattern = "/{{section:(\#?.+)}}/";
 	
@@ -130,6 +139,8 @@ function BBG_WrapStuff( $post ) {
 			if (substr($match, 0, 1) == '#' || substr(strtolower($match), 0, 3) == 'rgb') {
 				$newpost .= "<div class='section full-width-background' style='background:" . $match . ";'>"; 
 			} else {
+
+				
 				$newpost .= "<div class='section full-width-background " . $match . "'>"; 
 			}
 			
@@ -183,8 +194,6 @@ function BBG_WrapStuff( $post ) {
 
 
 }
-
-
 
 
 

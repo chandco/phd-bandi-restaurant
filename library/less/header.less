@@ -42,7 +42,7 @@
 
 .header {
   position: relative;
-  z-index: 9;
+  z-index: 2000;
   backface-visibility: hidden;
   border-bottom: 1px solid RGBA(0,0,0,0.2);
   padding-bottom: 1em;
@@ -57,9 +57,9 @@
 
     @media screen and (max-width: 900px) {
       max-width: 100%;
-      position: fixed;
+      
       border-bottom: 2px solid RGBA(0,0,0,0.2);
-      height: @header-height-px * 0.7;
+      height: auto;
     }
 
 
@@ -74,6 +74,10 @@
       z-index: 1;
 
 
+    }
+
+    @media screen and (max-width: @tablet-break) {
+      padding-bottom: 0;
     }
 
 
@@ -98,6 +102,24 @@
         &.ampersand-logo {
           width: 80%;
           margin-bottom: 10px;
+
+          @media screen and (max-width: @tablet-break) {
+            display: inline-block;
+          }
+        }
+      }
+
+      @media screen and (max-width: @tablet-break) {
+        margin-left: 1em;
+        max-width: 100%;
+        margin-bottom: 0;
+        img {
+          display: block;
+          width: 100px !important;
+          height: auto;
+          vertical-align: middle;
+          margin-left: 0;
+
         }
       }
 
@@ -303,11 +325,12 @@ nav[role="navigation"] {
 @media screen and (max-width: 900px) {
 
   #navigation-dropdown {
+    color: #fff;
     display: block;
     z-index: 20;
     .button-reset();
-    font-size: 2em;
-    right: 0;
+    font-size: 3em;
+    right: 10px;
     width: 50px;
     text-align: right;
     line-height: 0;
@@ -341,7 +364,7 @@ nav[role="navigation"] {
       width: 100%;
       height: 100%;
       top : 0;
-      padding-top: @header-height-px;
+      padding-top: 70px;
       background: @white;
       z-index: 1000;
 
@@ -357,7 +380,7 @@ nav[role="navigation"] {
         animation-name: menufadein;
 
 
-        width: 96%;
+        width: 100%;
         
         > li {
           .alpha-color(@light, 0.8);
@@ -513,7 +536,7 @@ nav[role="navigation"] {
 
 @media screen and (max-width: 930px) {
   #carousel {
-    margin-top: @header-height-px;
+    margin-top: 0;
   }
 }
 
