@@ -1,7 +1,7 @@
 <?php
 
 
-
+define('GAPROPERTYID', 'UA-67905942-1');
 add_action( 'after_setup_theme', 'my_ag_child_theme_setup' );
 // new feature box
 
